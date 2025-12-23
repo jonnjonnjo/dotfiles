@@ -1,0 +1,14 @@
+[opener]
+open_pdf = [
+	{run ='zathura "$@"',desc='open'}
+]
+open_vid = [
+	{run='mpv "$@"', desc='open'}
+]
+
+[open]
+prepend_rules=[
+	{name="*.pdf",use="open_pdf"},
+	{name = "*.{mkv,mp4,avi,mov,webm,flv,wmv,m4v,mpg,mpeg}", use = "open_vid"},
+]
+
