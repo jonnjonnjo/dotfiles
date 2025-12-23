@@ -109,6 +109,7 @@ source /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 alias f='firefox'
 alias ff='fastfetch'
 alias ls='lsd'
+alias dotf='cd ~/dotfiles'
 
 . "$HOME/.local/bin/env"
 eval "$(uvx --generate-shell-completion zsh)"
