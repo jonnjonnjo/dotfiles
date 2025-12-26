@@ -23,6 +23,12 @@
             "keyColor": "green",
             "format": "{1}" 
         },
+	{
+    "type": "datetime",
+    // "key": "Date Time",
+    "keyColor": "blue",
+    // "format": "{1}-{2}-{3} {4}:{5}:{6}" 
+},
         {
             "type": "memory",
             "keyColor": "yellow"
