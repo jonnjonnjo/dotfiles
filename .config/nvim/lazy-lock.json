@@ -1,5 +1,8 @@
 {
   "bufferline.nvim": { "branch": "main", "commit": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3" },
+  "gruvbox.nvim": { "branch": "main", "commit": "5e0a460d8e0f7f669c158dedd5f9ae2bcac31437" },
+  "kanagawa": { "branch": "master", "commit": "aef7f5cec0a40dbe7f3304214850c472e2264b10" },
+  "kanagawa-paper.nvim": { "branch": "master", "commit": "25d3656a187c9596647b73abb71521f0339616c7" },
   "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
   "lualine.nvim": { "branch": "master", "commit": "47f91c416daef12db467145e16bed5bbfe00add8" },
   "markdown-preview.nvim": { "branch": "master", "commit": "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee" },
@@ -8,5 +11,7 @@
   "mini.nvim": { "branch": "main", "commit": "e7a8e5a0920df1435172d42fb32e474bbb30d021" },
   "nvim-lspconfig": { "branch": "master", "commit": "d696e36d5792daf828f8c8e8d4b9aa90c1a10c2a" },
   "nvim-web-devicons": { "branch": "master", "commit": "6788013bb9cb784e606ada44206b0e755e4323d7" },
-  "oil.nvim": { "branch": "master", "commit": "bbfa7cba85967dc9dbfe0ca486fd4b17084bf846" }
+  "oil.nvim": { "branch": "master", "commit": "bbfa7cba85967dc9dbfe0ca486fd4b17084bf846" },
+  "okcolors": { "branch": "main", "commit": "fc3adc66edf6d146e28122e3872f1b402747f94c" },
+  "vim": { "branch": "main", "commit": "7014644e25d5cebcb3e70a079804c44ec14d8e46" }
 }
