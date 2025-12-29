@@ -5,10 +5,7 @@ return {
   { "embark-theme/vim" },
   { "rebelot/kanagawa.nvim" },
   { "savq/melange-nvim" },
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "kanagawa",
-    },
-  },
+  { "LazyVim/LazyVim", opts = {
+    colorscheme = "melange",
+  } },
 }
