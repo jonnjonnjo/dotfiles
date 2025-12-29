@@ -13,6 +13,11 @@
             "type": "title",
             "format": "|-------------------------------------------------------|\u001b[40D: {#1}{user-name} @ {host-name}{#} :"
         },
+    {
+    "type": "brightness",
+    "key": "Brightness",
+    "keyColor": "yellow"
+},
         // "break",
         // {
         //     "type": "host",
