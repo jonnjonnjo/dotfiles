@@ -63,7 +63,7 @@
             "type": "battery",
             "key": "Battery", 
             "keyColor": "red",
-            "format": "{capacity}% [{status}]" 
+            "format": "{capacity} [{status}]" 
         },
         {
             "type": "custom",

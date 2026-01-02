@@ -115,6 +115,8 @@ export EDITOR='nvim'
 alias ff='fastfetch'
 alias ls='lsd'
 alias dotf='cd ~/dotfiles'
+alias wgu='wg-quick up'
+alias wgd='wg-quick down'
 
 . "$HOME/.local/bin/env"
 eval "$(uvx --generate-shell-completion zsh)"
