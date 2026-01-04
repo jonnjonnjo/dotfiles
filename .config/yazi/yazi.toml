@@ -1,6 +1,6 @@
 [opener]
 open_pdf = [
-	# {run ='sioyek "$@" --new-window',desc='open'}
+  # {run ='sioyek "$@" --new-window',desc='open'}
  { run = 'zathura "$@"', desc='open_pdf'}
 ]
 open_vid = [
