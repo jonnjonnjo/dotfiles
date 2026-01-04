@@ -6,6 +6,8 @@ Repo containin all of my configuration
 2. Learn and use Telescope.nvim
 
 ## neovim-specific keymap
+
+### Competitive Programming
 1.`<leader>tcpc` to copy the selected template to clipboard
 
 2.`<leader>tcpi` to insert the selected template into the current buffer code
