@@ -118,11 +118,10 @@ void open() {
 }
 
 void solve() {
-	// CP
+  // CP
 }
 int32_t main() {
   fastIO;
-  query;
-  solve();
+  query solve();
   return 0;
 }
