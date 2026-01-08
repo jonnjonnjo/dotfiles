@@ -122,5 +122,12 @@ alias wgd='wg-quick down'
 eval "$(uvx --generate-shell-completion zsh)"
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-# testing from Coding
-# testing from config
+
+cpp(){
+  local name="${1%.cpp}"
+  g++ -std=c++17 -O2 -Wall -Wextra -fsanitize=address "$name.cpp" -o "$name"
+  if [ $? -eq 0 ]; then
+    # echo " --[Running : $name]--"
+    ./"$name"
+  fi
+}
