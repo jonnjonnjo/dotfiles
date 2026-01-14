@@ -88,6 +88,8 @@ source /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 export VISUAL='nvim'
 export EDITOR='nvim'
 
+export XDG_CACHE_HOME="$HOME/.cache"
+
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
