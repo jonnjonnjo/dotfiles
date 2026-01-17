@@ -1,15 +1,29 @@
+# [opener]
+# open_pdf = [
+#  { run = 'zathura "$@"', desc='open_pdf'}
+# ]
+# open_vid = [
+# 	{run='mpv "$@"', desc='open'}
+# ]
+#
+# [open]
+# prepend_rules=[
+# 	{name="*.pdf",use="open_pdf"},
+# 	{name = "*.{mkv,mp4,avi,mov,webm,flv,wmv,m4v,mpg,mpeg}", use = "open_vid"},
+# ]
+#
 [opener]
 open_pdf = [
-  # {run ='sioyek "$@" --new-window',desc='open'}
- { run = 'zathura "$@"', desc='open_pdf'}
+ { run = 'zathura "$@"', desc = 'open_pdf' }
 ]
 open_vid = [
-	{run='mpv "$@"', desc='open'}
+ { run = 'mpv "$@"', desc = 'open' }
 ]
 
 [open]
-prepend_rules=[
-	{name="*.pdf",use="open_pdf"},
-	{name = "*.{mkv,mp4,avi,mov,webm,flv,wmv,m4v,mpg,mpeg}", use = "open_vid"},
+rules = [
+ { mime = "application/pdf", use = "open_pdf" },
+ { mime = "video/*", use = "open_vid" },
+ { name = "*.pdf", use = "open_pdf" },
+ { name = "*.{mkv,mp4,avi,mov,webm,flv,wmv,m4v,mpg,mpeg}", use = "open_vid" },
 ]
-
