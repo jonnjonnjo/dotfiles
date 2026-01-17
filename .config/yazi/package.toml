@@ -1,0 +1,19 @@
+[[plugin.deps]]
+use = "yazi-rs/plugins:full-border"
+rev = "56971d0"
+hash = "3996fc74044bc44144b323686f887e1"
+
+[[flavor.deps]]
+use = "dangooddd/kanagawa"
+rev = "04985d1"
+hash = "c69a63981e254a3a06a11c2bf0e6af1d"
+
+[[flavor.deps]]
+use = "muratoffalex/kanagawa-lotus"
+rev = "d1947d4"
+hash = "49004b18da5d1223d8d993cdaca0dacd"
+
+[[flavor.deps]]
+use = "gosxrgxx/flexoki-light"
+rev = "45eb0a0"
+hash = "80ba3eec4bf0b9770b1558c26b5b4a72"
