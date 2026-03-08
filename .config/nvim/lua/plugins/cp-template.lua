@@ -6,6 +6,8 @@ local function copy_template_to_clipboard()
   require("telescope.builtin").find_files({
     prompt_title = "CP Templates",
     cwd = TEMPLATE_DIR,
+    find_command = { "ls", "-1r" },
+    sorter = require("telescope.sorters").empty(),
     attach_mappings = function(prompt_bufnr, map)
       local actions = require("telescope.actions")
       local action_state = require("telescope.actions.state")
@@ -39,6 +41,8 @@ local function insert_template_at_cursor()
   require("telescope.builtin").find_files({
     prompt_title = "CP Templates",
     cwd = TEMPLATE_DIR,
+    find_command = { "ls", "-1r" },
+    sorter = require("telescope.sorters").empty(),
     attach_mappings = function(prompt_bufnr, map)
       local actions = require("telescope.actions")
       local action_state = require("telescope.actions.state")
