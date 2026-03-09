@@ -122,6 +122,7 @@ void solve() {
 }
 int32_t main() {
   fastIO;
+  // solve();
   query solve();
   return 0;
 }
