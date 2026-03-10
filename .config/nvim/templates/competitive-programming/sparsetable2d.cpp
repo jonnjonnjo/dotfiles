@@ -40,7 +40,7 @@ struct SparseTable2D {
                         table[kr - 1][kc][r + (1 << (kr - 1))][c]);
   }
 
-  int query(int r1, int r2, int c1, int c2) {
+  int queryResult(int r1, int r2, int c1, int c2) {
     int kr = log2[r2 - r1 + 1];
     int kc = log2[c2 - c1 + 1];
     int rr = r2 - (1 << kr) + 1;
