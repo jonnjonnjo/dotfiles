@@ -1,7 +1,7 @@
 struct SegTreeLazy {
   vector<long long> tree, lazy;
   int n;
-  long long combine(long long a, long long b) { return a + b; }
+  long long combine(long long a, long long b) { return (a + b); }
   long long identity() { return 0; }
   SegTreeLazy(vector<long long> &arr) {
     n = arr.size();
@@ -44,16 +44,16 @@ struct SegTreeLazy {
     update(2 * node + 1, mid + 1, r, ql, qr, val);
     tree[node] = combine(tree[2 * node], tree[2 * node + 1]);
   }
-  long long query(int node, int l, int r, int ql, int qr) {
+  long long queryResult(int node, int l, int r, int ql, int qr) {
     if (qr < l || r < ql)
       return identity();
     if (ql <= l && r <= qr)
       return tree[node];
     pushDown(node, l, r);
     int mid = (l + r) / 2;
-    return combine(query(2 * node, l, mid, ql, qr),
-                   query(2 * node + 1, mid + 1, r, ql, qr));
+    return combine(queryResult(2 * node, l, mid, ql, qr),
+                   queryResult(2 * node + 1, mid + 1, r, ql, qr));
   }
   void update(int l, int r, long long val) { update(1, 0, n - 1, l, r, val); }
-  long long query(int l, int r) { return query(1, 0, n - 1, l, r); }
+  long long queryResult(int l, int r) { return queryResult(1, 0, n - 1, l, r); }
 };
