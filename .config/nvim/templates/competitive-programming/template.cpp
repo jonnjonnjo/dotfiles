@@ -84,7 +84,7 @@ void printRec(const T &t, const Args &...args) {
 // Oneliner Function
 ll sigma(ll num) { return (num * (num + 1)) / 2; }
 ll gcd(ll a, ll b) { return (a == 0 ? b : gcd(b % a, a)); }
-ll lcm(ll a, ll b) { return (a * b) / gcd(a, b); }
+ll lcm(ll a, ll b) { return a / gcd(a, b) * b; }
 ll binpow(ll a, ll b, ll m = INT64_MAX) {
   ll r = 1;
   a %= m;
