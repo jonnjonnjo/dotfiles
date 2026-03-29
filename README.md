@@ -1,13 +1,2 @@
 # dotfiles
-Repo containin all of my configuration 
-
-## List to Do
-1. Fix the conflict between [zsh-autocompletions & zsh-vi-mode](https://github.com/marlonrichert/zsh-autocomplete/issues/192)
-2. Learn and use Telescope.nvim
-
-## neovim-specific keymap
-
-### Competitive Programming
-1.`<leader>tcpc` to copy the selected template to clipboard
-
-2.`<leader>tcpi` to insert the selected template into the current buffer code
+This repo contains all files related to my config. Please check the branch of this repo as this branch doesn't hold any meaningful information. Configuration are separated by each distro because there's no quite compatibility and I want to try different configuration for each distro :D
