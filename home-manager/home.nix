@@ -33,12 +33,10 @@
     wireguard-tools
     gcc
     wev
+  zathura
+  rclone
   ];
 
-  home.zathura = {
-      enable = true;
-      options = {};
-    };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # pain files is through 'home.file'.
