@@ -35,7 +35,10 @@
     wev
   ];
 
-  home.zathura.enable = true;
+  home.zathura = {
+      enable = true;
+      options = {};
+    };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # pain files is through 'home.file'.
