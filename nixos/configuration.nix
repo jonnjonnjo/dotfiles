@@ -96,6 +96,7 @@ nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 fonts.fontconfig.defaultFonts.sansSerif = [ "Noto Sans CJK SC" ];
  fonts.packages = with pkgs;[
+nerdfonts 
  noto-fonts-cjk-sans
  noto-fonts-cjk-serif
  ];

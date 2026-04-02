@@ -34,7 +34,10 @@
   zathura
   rclone
   zinit
+  powerline
   ];
+
+
 
 
   home.file = {
