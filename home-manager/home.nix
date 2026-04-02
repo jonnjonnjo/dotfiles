@@ -15,8 +15,6 @@
   # release notes.
   home.stateVersion = "25.11"; # Please read the comment before changing.
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
   home.packages = with pkgs; [
   fastfetch
     neovim
@@ -35,11 +33,10 @@
     wev
   zathura
   rclone
+  zinit
   ];
 
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # pain files is through 'home.file'.
   home.file = {
     ".config/hypr"  = {
         source = ./dotfiles/hypr;
@@ -74,10 +71,16 @@
   #  /etc/profiles/per-user/jon/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
     EDITOR="nvim";
   };
 
-  # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+programs.zsh = {
+  enable = true;
+  initExtra = ''
+    source ${pkgs.zinit}/share/zinit/zinit.zsh
+    zinit light zsh-users/zsh-autosuggestions
+  '';
+};
 }
