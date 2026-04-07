@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./modules/ly.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -96,7 +97,7 @@ nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 fonts.fontconfig.defaultFonts.sansSerif = [ "Noto Sans CJK SC" ];
  fonts.packages = with pkgs;[
-nerdfonts 
+ # nerdfonts 
  noto-fonts-cjk-sans
  noto-fonts-cjk-serif
  ];

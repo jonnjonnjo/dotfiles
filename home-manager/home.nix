@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
   home.username = "jon";
   home.homeDirectory = "/home/jon";
 
@@ -33,11 +31,8 @@
     wev
   zathura
   rclone
-  zinit
   powerline
   ];
-
-
 
 
   home.file = {
@@ -57,33 +52,10 @@
       }; 
   };
 
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/jon/etc/profile.d/hm-session-vars.sh
-  #
   home.sessionVariables = {
     EDITOR="nvim";
   };
 
   programs.home-manager.enable = true;
 
-programs.zsh = {
-  enable = true;
-  initExtra = ''
-    source ${pkgs.zinit}/share/zinit/zinit.zsh
-    zinit light zsh-users/zsh-autosuggestions
-  '';
-};
 }
