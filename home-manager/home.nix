@@ -33,6 +33,7 @@
   rclone
   powerline
   hyprlock
+  unzip
   hypridle
   ];
 
