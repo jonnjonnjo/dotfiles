@@ -65,5 +65,6 @@ in
   };
 
   programs.home-manager.enable = true;
-
+  
+  services.hyprsunset.enable=true;
 }

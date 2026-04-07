@@ -1,6 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
 { config, lib, pkgs, ... }:
 
@@ -14,21 +11,23 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  # Use latest kernel.
+  boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelParams = ["hid_apple.fnmode=1"];
 
-  networking.hostName = "jon-nixos"; # Define your hostname.
-
-  # Configure network connections interactively with nmcli or nmtui.
+  networking.hostName = "jon-nixos"; 
   networking.networkmanager.enable = true;
-
-
-nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # Set your time zone.
   time.timeZone = "Asia/Jakarta";
+
+ nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  i18n.inputMethod = {
+   type = "fcitx5";
+   enable = true;
+   fcitx5.addons = with pkgs; [
+qt6Packages.fcitx5-chinese-addons
+     fcitx5-gtk
+   ];
+ };
 
 
   # Configure network proxy if necessary
@@ -81,19 +80,19 @@ nix.settings.experimental-features = [ "nix-command" "flakes" ];
 	extraGroups = [
 		"wheel"
 		"networkmanager"
+    "video"
 	];
   };
 
   users.defaultUserShell =pkgs.zsh;
 
-  # programs.firefox.enable = true;
   programs.hyprland.enable = true;
   programs.zsh.enable = true;
-  # List packages installed in system profile.
-  # You can use https://search.nixos.org/ to find more packages (and options).
    environment.systemPackages = with pkgs; [
    texlive.combined.scheme-full
+brightnessctl
  ];
+
 
 fonts.fontconfig.defaultFonts.sansSerif = [ "Noto Sans CJK SC" ];
  fonts.packages = with pkgs;[
@@ -102,14 +101,6 @@ fonts.fontconfig.defaultFonts.sansSerif = [ "Noto Sans CJK SC" ];
  noto-fonts-cjk-serif
  ];
 
-  i18n.inputMethod = {
-   type = "fcitx5";
-   enable = true;
-   fcitx5.addons = with pkgs; [
-qt6Packages.fcitx5-chinese-addons
-     fcitx5-gtk
-   ];
- };
 
 
   # Some programs need SUID wrappers, can be configured further or are
