@@ -32,6 +32,8 @@
   zathura
   rclone
   powerline
+  hyprlock
+  hypridle
   ];
 
 

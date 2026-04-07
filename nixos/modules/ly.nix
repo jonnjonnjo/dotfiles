@@ -3,7 +3,8 @@
   services.displayManager.ly = {
     enable = true;
     settings = {
-      animation = "matrix";
+# edit this if you are not deppressed 
+      animation ="colormix";
       clock = "%c";
       bigclock = false;
       margin_box_h = 2;
@@ -11,4 +12,5 @@
       vi_mode = false;
     };
   };
-}
+
+  }
