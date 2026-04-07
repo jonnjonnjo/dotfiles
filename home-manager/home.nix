@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
+{ config,awww, pkgs, ... }:
 
+let 
+  randomWallpaper = import ./scripts/wallpaper.nix {inherit pkgs;};
+in
 {
   home.username = "jon";
   home.homeDirectory = "/home/jon";
@@ -14,6 +17,8 @@
   home.stateVersion = "25.11"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
+  awww.packages.${pkgs.system}.default
+  randomWallpaper
   fastfetch
     neovim
     vim
