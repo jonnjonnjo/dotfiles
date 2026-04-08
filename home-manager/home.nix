@@ -41,7 +41,7 @@ in
     hyprlock
     unzip
     hypridle
-
+    zinit
     
     (writeShellScriptBin "f-g" ''
       firefox -P "f-g" --no-remote &
@@ -78,9 +78,10 @@ in
         recursive = true;
       }; 
 
-     
-
-
+    ".config/zsh" = {
+        source = ./dotfiles/zsh;
+        recursive = true;
+      };
   };
 
   home.sessionVariables = {
@@ -97,6 +98,13 @@ in
 
   programs.home-manager.enable = true;
   programs.tofi.enable = true;
+  programs.zsh = {
+    enable = true;
+    initExtra = ''
+      source ${pkgs.zinit}/share/zinit/zinit.zsh
+      source ~/.config/zsh/.zshrc
+    '';
+  };
   
   services.hyprsunset.enable=true;
 }
