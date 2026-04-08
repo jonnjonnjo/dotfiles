@@ -24,10 +24,15 @@
    type = "fcitx5";
    enable = true;
    fcitx5.addons = with pkgs; [
-qt6Packages.fcitx5-chinese-addons
+    qt6Packages.fcitx5-chinese-addons
      fcitx5-gtk
    ];
  };
+
+  hardware.graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
 
 
   # Configure network proxy if necessary
@@ -88,10 +93,11 @@ qt6Packages.fcitx5-chinese-addons
 
   programs.hyprland.enable = true;
   programs.zsh.enable = true;
-   environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [
    texlive.combined.scheme-full
-brightnessctl
- ];
+   brightnessctl
+   hypridle
+  ];
 
 
 fonts.fontconfig.defaultFonts.sansSerif = [ "Noto Sans CJK SC" ];

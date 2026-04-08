@@ -20,6 +20,7 @@ in
   awww.packages.${pkgs.system}.default
     randomWallpaper
     fastfetch
+    whois
     neovim
     vim
     wget
