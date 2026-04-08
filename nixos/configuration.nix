@@ -97,6 +97,7 @@
    texlive.combined.scheme-full
    brightnessctl
    hypridle
+   hyprsunset
   ];
 
 
