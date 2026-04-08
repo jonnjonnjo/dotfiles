@@ -98,6 +98,7 @@
    brightnessctl
    hypridle
    hyprsunset
+   hyprcursor
   ];
 
 

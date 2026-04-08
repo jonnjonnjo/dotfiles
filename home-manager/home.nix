@@ -41,6 +41,7 @@ in
     hyprlock
     unzip
     hypridle
+
     
     (writeShellScriptBin "f-g" ''
       firefox -P "f-g" --no-remote &
@@ -84,6 +85,14 @@ in
 
   home.sessionVariables = {
     EDITOR="nvim";
+  };
+
+  home.pointerCursor = {
+    gtk.enable = true;
+    hyprcursor.enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Amber";
+    size = 24;
   };
 
   programs.home-manager.enable = true;
