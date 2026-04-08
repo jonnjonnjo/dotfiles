@@ -71,6 +71,13 @@ in
         source = ./dotfiles/tofi;
         recursive = true;
       }; 
+    ".config/fastfetch"  = {
+        source = ./dotfiles/fastfetch;
+        recursive = true;
+      }; 
+
+     
+
 
   };
 
