@@ -18,8 +18,8 @@ in
 
   home.packages = with pkgs; [
   awww.packages.${pkgs.system}.default
-  randomWallpaper
-  fastfetch
+    randomWallpaper
+    fastfetch
     neovim
     vim
     wget
@@ -34,12 +34,21 @@ in
     wireguard-tools
     gcc
     wev
-  zathura
-  rclone
-  powerline
-  hyprlock
-  unzip
-  hypridle
+    zathura
+    rclone
+    powerline
+    hyprlock
+    unzip
+    hypridle
+    
+    (writeShellScriptBin "f-g" ''
+      firefox -P "f-g" --no-remote &
+    '')
+    
+
+    (writeShellScriptBin "f-o" ''
+      firefox -P "f-o" --no-remote &
+    '')
   ];
 
 
@@ -58,6 +67,11 @@ in
         source = ./dotfiles/nvim;
         recursive = true;
       }; 
+    ".config/tofi"  = {
+        source = ./dotfiles/tofi;
+        recursive = true;
+      }; 
+
   };
 
   home.sessionVariables = {
@@ -65,6 +79,7 @@ in
   };
 
   programs.home-manager.enable = true;
+  programs.tofi.enable = true;
   
   services.hyprsunset.enable=true;
 }
