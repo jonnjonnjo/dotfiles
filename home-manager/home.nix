@@ -105,6 +105,12 @@ in
       source ~/.config/zsh/.zshrc
     '';
   };
+  programs.starship = {
+    enable = true;
+    settings = {
+      add_newline = true;
+    };
+  };
   
   services.hyprsunset.enable=true;
 }
