@@ -30,6 +30,10 @@ in
     (lobster.packages.${pkgs.system}.default.override{
 	mpv = config.programs.mpv.finalPackage;
     })
+    yt-dlp
+    aria2
+    ffmpeg
+    zoom-us
     randomWallpaper
     fastfetch
     gnumake
@@ -108,6 +112,7 @@ in
     name = "Bibata-Modern-Amber";
     size = 24;
   };
+	
 
   programs.home-manager.enable = true;
   programs.tofi.enable = true;

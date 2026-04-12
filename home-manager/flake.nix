@@ -24,7 +24,12 @@
     { nixpkgs, home-manager,awww, nixvim,lobster, ... }:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfreePredicate = pkg: builtins.elem pkg.pname [
+          "zoom-us"
+        ];
+      };
     in
     {
       homeConfigurations."jon" = home-manager.lib.homeManagerConfiguration {
