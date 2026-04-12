@@ -3,10 +3,10 @@
 let 
   randomWallpaper = import ./scripts/wallpaper.nix {inherit pkgs;};
 
-  myMpv = config.programs.mpv.finalPackage;
-  lobster-custom = lobster.packages.${pkgs.system}.default.override {
-    mpv = myMpv;
-  };
+  # myMpv = config.programs.mpv.finalPackage;
+  # lobster-custom = lobster.packages.${pkgs.system}.default.override {
+  #   mpv = myMpv;
+  # };
 in
 {
   imports = [
@@ -27,7 +27,9 @@ in
 
   home.packages = with pkgs; [
     awww.packages.${pkgs.system}.default
-    lobster-custom
+    (lobster.packages.${pkgs.system}.default.override{
+	mpv = config.programs.mpv.finalPackage;
+    })
     randomWallpaper
     fastfetch
     gnumake
