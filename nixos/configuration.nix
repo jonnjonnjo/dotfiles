@@ -14,25 +14,35 @@
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  # for kernel level fix on coloring
+  boot.kernelParams = [ "vt.default_red=0,0,0,0,0,0,0,0" ];
+
   networking.hostName = "jon-nixos"; 
   networking.networkmanager.enable = true;
   time.timeZone = "Asia/Jakarta";
 
  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  i18n.inputMethod = {
-   type = "fcitx5";
-   enable = true;
-   fcitx5.addons = with pkgs; [
-    qt6Packages.fcitx5-chinese-addons
-     fcitx5-gtk
-   ];
- };
+  
+  i18n = {
+    inputMethod = {
+      type = "fcitx5";
+      enable = true;
+      fcitx5.addons = with pkgs; [
+        qt6Packages.fcitx5-chinese-addons
+        fcitx5-gtk
+      ];
+    };
+  };
 
   hardware.graphics = {
-      enable = true;
-      enable32Bit = true;
-    };
+    enable = true;
+    enable32Bit = true;
+    extraPackages = with pkgs; [
+      mesa
+      vulkan-loader
+      vulkan-validation-layers
+    ];
+  };
 
 
   # Configure network proxy if necessary
@@ -41,11 +51,13 @@
 
   # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkb.options in tty.
-  # };
+  console = {
+    enable = true;
+    packages = [ pkgs.terminus_font ];
+    font = "ter-v18n";
+    # keyMap = "us";
+    useXkbConfig = true; # use xkb.options in tty.
+  };
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;

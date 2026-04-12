@@ -1,9 +1,18 @@
-{ config,awww, pkgs, ... }:
+{ config,awww,  lobster,pkgs, ... }:
 
 let 
   randomWallpaper = import ./scripts/wallpaper.nix {inherit pkgs;};
+
+  myMpv = config.programs.mpv.finalPackage;
+  lobster-custom = lobster.packages.${pkgs.system}.default.override {
+    mpv = myMpv;
+  };
 in
 {
+  imports = [
+    ./nixvim.nix
+
+  ];
   home.username = "jon";
   home.homeDirectory = "/home/jon";
 
@@ -17,16 +26,18 @@ in
   home.stateVersion = "25.11"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
-  awww.packages.${pkgs.system}.default
+    awww.packages.${pkgs.system}.default
+    lobster-custom
     randomWallpaper
     fastfetch
+    gnumake
+    nodejs 
+    yarn
     whois
-    neovim
     vim
     wget
     firefox
     gh
-    mpv
     grim
     slurp
     wl-clipboard
@@ -55,6 +66,10 @@ in
 
 
   home.file = {
+    ".config/lobster" = {
+        source = ./dotfiles/lobster;
+        recursive  = true;
+      };
     ".config/hypr"  = {
         source = ./dotfiles/hypr;
         recursive = true;
@@ -65,10 +80,6 @@ in
         recursive = true;
       }; 
 
-    ".config/nvim"  = {
-        source = ./dotfiles/nvim;
-        recursive = true;
-      }; 
     ".config/tofi"  = {
         source = ./dotfiles/tofi;
         recursive = true;
@@ -98,6 +109,18 @@ in
 
   programs.home-manager.enable = true;
   programs.tofi.enable = true;
+  programs.mpv = {
+    enable = true;
+    scripts = [ pkgs.mpvScripts.uosc ];
+    config = {
+      vo = "gpu-next";
+      gpu-api = "vulkan";
+      hwdec = "vaapi";
+      hwdec-codecs = "all";
+      # ADD THIS LINE:
+      target-colorspace-hint = "no"; # Fixes the fullscreen washout
+    };
+  };
   programs.zsh = {
     enable = true;
     initExtra = ''
@@ -108,7 +131,35 @@ in
   programs.starship = {
     enable = true;
     settings = {
-      add_newline = true;
+      add_newline = false;
+
+      format = "$directory$git_branch$git_status$cmd_duration$character";
+
+      directory = {
+        truncation_length = 1;
+        truncate_to_repo = false;
+      };
+
+      git_branch = {
+        format = "[$branch]($style) ";
+        style = "cyan";
+      };
+
+      git_status = {
+        format = "[$all_status$ahead_behind]($style) ";
+        style = "red";
+      };
+
+      cmd_duration = {
+        min_time = 2000;
+        format = "[ $duration]($style) ";
+        style = "yellow";
+      };
+
+      character = {
+        success_symbol = "[>](green)";
+        error_symbol = "[>](red)";
+      };
     };
   };
   

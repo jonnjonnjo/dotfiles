@@ -1,0 +1,1 @@
+player="/home/jon/.nix-profile/bin/mpv"

@@ -10,11 +10,18 @@
     };
     awww = {
         url="git+https://codeberg.org/LGFae/awww";
-      };
+    };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    lobster = {
+      url= "github:justchokingaround/lobster";
+    };
   };
 
   outputs =
-    { nixpkgs, home-manager,awww, ... }:
+    { nixpkgs, home-manager,awww, nixvim,lobster, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -23,9 +30,13 @@
       homeConfigurations."jon" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
-        modules = [ ./home.nix ];
+        modules = [ 
+          ./home.nix 
+          nixvim.homeModules.nixvim
 
-        extraSpecialArgs = {inherit awww;};
+        ];
+
+        extraSpecialArgs = {inherit awww lobster;};
       };
     };
 }
