@@ -39,6 +39,7 @@ in
     yt-dlp
     aria2
     ffmpeg
+    ripgrep
     zoom-us
     randomWallpaper
     fastfetch
