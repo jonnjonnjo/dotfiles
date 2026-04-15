@@ -1,4 +1,4 @@
-{ config,awww,  lobster,pkgs, ... }:
+{ config,awww, lib, lobster,pkgs, ... }:
 
 let 
   randomWallpaper = import ./scripts/wallpaper.nix {inherit pkgs;};
@@ -13,6 +13,12 @@ in
     ./nixvim.nix
 
   ];
+
+  home.activation = {
+    createNvimUndoDir = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      mkdir -p ${config.home.homeDirectory}/.local/state/nvim/undo
+    '';
+  };
   home.username = "jon";
   home.homeDirectory = "/home/jon";
 
@@ -102,6 +108,7 @@ in
   };
 
   home.sessionVariables = {
+    QT_SCALE_FACTOR = "1.5";
     EDITOR="nvim";
   };
 

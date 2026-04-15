@@ -24,11 +24,15 @@
     { nixpkgs, home-manager,awww, nixvim,lobster, ... }:
     let
       system = "x86_64-linux";
+      # pkgs = import nixpkgs {
+      #   inherit system;
+      #   config.allowUnfreePredicate = pkg: builtins.elem pkg.pname [
+      #     "zoom-us"
+      #   ];
+      # };
       pkgs = import nixpkgs {
         inherit system;
-        config.allowUnfreePredicate = pkg: builtins.elem pkg.pname [
-          "zoom-us"
-        ];
+        config.allowUnfree = true;
       };
     in
     {
