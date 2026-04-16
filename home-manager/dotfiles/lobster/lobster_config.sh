@@ -13,7 +13,14 @@ download_video() {
   if [ ! -f "$final_file" ]; then
     echo "Video missing. Downloading highest quality..."
     # Quality Fix: Added -f "bestvideo+bestaudio/best"
-    yt-dlp "$1" -f "bestvideo+bestaudio/best" --no-skip-unavailable-fragments --fragment-retries infinite -N 16 -o "$temp_vid"
+    # yt-dlp "$1" -f "bestvideo+bestaudio/best" --no-skip-unavailable-fragments --fragment-retries infinite -N 1024 -o "$temp_vid"
+      yt-dlp "$1" \
+    -f "bestvideo+bestaudio/best" \
+    --skip-unavailable-fragments \
+    --fragment-retries 5 \
+    --ignore-errors \
+    -N 32 \
+    -o "$temp_vid"
   else
     echo "Video exists. Overriding and cleaning subtitle track..."
     # We rename to temp so we can read from it and write a fresh 'clean' version
@@ -39,10 +46,12 @@ download_video() {
         -metadata:s:s:0 language=eng \
         -metadata:s:s:0 title="English" "${final_file}_fixed.mkv"
 
-      if [ -f "${final_file}_fixed.mkv" ]; then
-        mv "${final_file}_fixed.mkv" "$final_file"
-        rm -f "$temp_vid" "$temp_sub"
-        echo "Success: $final_file is now high quality with clean subs."
+      # Final Success Cleanup
+      if [ -f "$final_file" ]; then
+        rm -f "${temp_vid}"* "${temp_sub}"* 2>/dev/null
+        # This specifically kills those pesky fragment files if any are left
+        rm -f "${save_dir}/${title}"*.part-* 2>/dev/null
+        echo "Success: $final_file is ready."
         return 0
       fi
     fi

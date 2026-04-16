@@ -6,6 +6,7 @@
 	
     opts = {
       number = true;
+      clipboard = "unnamedplus";
       relativenumber = true;
       shiftwidth = 2;
       tabstop = 2;
@@ -69,7 +70,19 @@
 
       comment.enable = true;
 
-      which-key.enable = true;
+      which-key = {
+        enable = true;
+        settings = {
+          win = {
+            "no_overlap" = true;
+             padding = "{2,1}";
+             title_post =  "left";
+          };
+
+        };
+      };
+
+      nvim-surround.enable = true;
 
       indent-blankline.enable = true;
 
