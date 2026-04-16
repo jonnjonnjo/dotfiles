@@ -127,15 +127,19 @@ in
   programs.mpv = {
     enable = true;
     scripts = [ pkgs.mpvScripts.uosc ];
-    config = {
-      vo = "gpu-next";
-      gpu-api = "vulkan";
-      hwdec = "vaapi";
-      hwdec-codecs = "all";
-      # ADD THIS LINE:
-      target-colorspace-hint = "no"; # Fixes the fullscreen washout
+    bindings = {
+      "ctrl+alt+s" = "script-binding uosc/load-subtitles";
+      "ctrl+alt+d" = "script-binding uosc/download-subtitles";
     };
   };
+
+  xdg.configFile."mpv/mpv.conf".text = ''
+    vo=gpu-next
+    gpu-api=vulkan
+    target-colorspace-hint=no
+    hwdec=vaapi
+  '';
+
   programs.zsh = {
     enable = true;
     initExtra = ''
