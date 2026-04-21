@@ -61,7 +61,7 @@
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
-
+  services.pcscd.enable = true;
 
   
 
@@ -126,10 +126,10 @@ fonts.fontconfig.defaultFonts.sansSerif = [ "Noto Sans CJK SC" ];
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   # List services that you want to enable:
 

@@ -1,12 +1,7 @@
-{ config,awww, lib, lobster,pkgs, ... }:
+{ config,awww, lib, pkgs, ... }:
 
 let 
   randomWallpaper = import ./scripts/wallpaper.nix {inherit pkgs;};
-
-  # myMpv = config.programs.mpv.finalPackage;
-  # lobster-custom = lobster.packages.${pkgs.system}.default.override {
-  #   mpv = myMpv;
-  # };
 in
 {
   imports = [
@@ -33,11 +28,16 @@ in
 
   home.packages = with pkgs; [
     awww.packages.${pkgs.system}.default
-    (lobster.packages.${pkgs.system}.default.override{
-	mpv = config.programs.mpv.finalPackage;
-    })
+    poppler-utils
+    stremio
+    google-chrome
     yt-dlp
+    pass
+    pinentry-curses 
     aria2
+    nsxiv
+    jpegoptim
+    ani-cli
     ffmpeg
     ripgrep
     zoom-us
@@ -59,7 +59,6 @@ in
     wireguard-tools
     gcc
     wev
-    zathura
     rclone
     powerline
     hyprlock
@@ -79,10 +78,6 @@ in
 
 
   home.file = {
-    ".config/lobster" = {
-        source = ./dotfiles/lobster;
-        recursive  = true;
-      };
     ".config/hypr"  = {
         source = ./dotfiles/hypr;
         recursive = true;
@@ -146,6 +141,21 @@ in
       source ${pkgs.zinit}/share/zinit/zinit.zsh
       source ~/.config/zsh/.zshrc
     '';
+  };
+  programs.zathura = {
+    enable = true;
+    options = {
+      selection-clipboard = "clipboard";
+    };
+  };
+  programs.gpg = {
+    enable = true;
+  };
+  programs.password-store = {
+    enable = true;
+    settings = {
+      PASSWORD_STORE_DIR = "${config.home.homeDirectory}/.my-vault";
+    };
   };
   programs.starship = {
     enable = true;

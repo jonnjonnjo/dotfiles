@@ -29,6 +29,10 @@
     # colorschemes.rose-pine.enable= true;
 
     keymaps = [
+      { mode = "n"; key = "<C-h>"; action = "<C-w>h"; options.desc = "Move to left window"; }
+      { mode = "n"; key = "<C-j>"; action = "<C-w>j"; options.desc = "Move to window below"; }
+      { mode = "n"; key = "<C-k>"; action = "<C-w>k"; options.desc = "Move to window above"; }
+      { mode = "n"; key = "<C-l>"; action = "<C-w>l"; options.desc = "Move to right window"; }
       { mode = "n"; key = "<leader>ff"; action = "<cmd>Telescope find_files<cr>"; options.desc = "Find files"; }
       { mode = "n"; key = "<leader>fg"; action = "<cmd>Telescope live_grep<cr>"; options.desc = "Live grep"; }
       { mode = "n"; key = "<leader>fb"; action = "<cmd>Telescope buffers<cr>"; options.desc = "Find buffers"; }
@@ -113,7 +117,21 @@
         servers = {
           lua_ls.enable = true;
           nixd.enable = true;
+          clangd.enable =  true;
         };
+        keymaps = {
+          "<leader>j" = "goto_next";
+          "<leader>k" = "goto_prev";
+        };
+        lspBuf = {
+          "gd" = "definition";
+          "gr" = "references";
+          "gi" = "implementation";
+          "K"  = "hover";
+          "<leader>rn" = "rename";
+          "<leader>ca" = "code_action";
+        };
+
       };
 
 

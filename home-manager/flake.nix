@@ -15,13 +15,10 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    lobster = {
-      url= "github:justchokingaround/lobster";
-    };
   };
 
   outputs =
-    { nixpkgs, home-manager,awww, nixvim,lobster, ... }:
+    { nixpkgs, home-manager,awww, nixvim, ... }:
     let
       system = "x86_64-linux";
       # pkgs = import nixpkgs {
@@ -45,7 +42,7 @@
 
         ];
 
-        extraSpecialArgs = {inherit awww lobster;};
+        extraSpecialArgs = {inherit awww ;};
       };
     };
 }
