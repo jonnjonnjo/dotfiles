@@ -1,8 +1,8 @@
 # zinit light zsh-users/zsh-autosuggestions
-# zinit light zsh-users/zsh-syntax-highlighting
-# zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
 zinit light jeffreytse/zsh-vi-mode
-zinit light marlonrichert/zsh-autocomplete
+# zinit light marlonrichert/zsh-autocomplete
 
 
 alias ff='fastfetch'

@@ -2,6 +2,8 @@
 
 let 
   randomWallpaper = import ./scripts/wallpaper.nix {inherit pkgs;};
+  opacityUp       = import ./scripts/opacity-up.nix {inherit pkgs;};
+  opacityDown = import ./scripts/opacity-down.nix {inherit pkgs;};
 in
 {
   imports = [
@@ -29,7 +31,8 @@ in
   home.packages = with pkgs; [
     awww.packages.${pkgs.system}.default
     poppler-utils
-    stremio
+    # stremio-linux-shell
+    # stremio
     google-chrome
     yt-dlp
     pass
@@ -42,6 +45,8 @@ in
     ripgrep
     zoom-us
     randomWallpaper
+    opacityUp  
+    opacityDown
     fastfetch
     gnumake
     nodejs 
@@ -97,10 +102,6 @@ in
         recursive = true;
       }; 
 
-    ".config/zsh" = {
-        source = ./dotfiles/zsh;
-        recursive = true;
-      };
   };
 
   home.sessionVariables = {
@@ -137,10 +138,11 @@ in
 
   programs.zsh = {
     enable = true;
-    initExtra = ''
-      source ${pkgs.zinit}/share/zinit/zinit.zsh
-      source ~/.config/zsh/.zshrc
-    '';
+    
+  };
+
+  programs.starship = {
+    enable = true;
   };
   programs.zathura = {
     enable = true;
@@ -155,40 +157,6 @@ in
     enable = true;
     settings = {
       PASSWORD_STORE_DIR = "${config.home.homeDirectory}/.my-vault";
-    };
-  };
-  programs.starship = {
-    enable = true;
-    settings = {
-      add_newline = false;
-
-      format = "$directory$git_branch$git_status$cmd_duration$character";
-
-      directory = {
-        truncation_length = 1;
-        truncate_to_repo = false;
-      };
-
-      git_branch = {
-        format = "[$branch]($style) ";
-        style = "cyan";
-      };
-
-      git_status = {
-        format = "[$all_status$ahead_behind]($style) ";
-        style = "red";
-      };
-
-      cmd_duration = {
-        min_time = 2000;
-        format = "[ $duration]($style) ";
-        style = "yellow";
-      };
-
-      character = {
-        success_symbol = "[>](green)";
-        error_symbol = "[>](red)";
-      };
     };
   };
   

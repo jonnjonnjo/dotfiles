@@ -29,6 +29,8 @@
     # colorschemes.rose-pine.enable= true;
 
     keymaps = [
+      { mode = ["n" "x" "o"]; key = "s"; action = "<cmd>lua require('flash').jump()<cr>"; options.desc = "Flash jump"; }
+      { mode = ["n" "x" "o"]; key = "S"; action = "<cmd>lua require('flash').treesitter()<cr>"; options.desc = "Flash treesitter"; }
       { mode = "n"; key = "<C-h>"; action = "<C-w>h"; options.desc = "Move to left window"; }
       { mode = "n"; key = "<C-j>"; action = "<C-w>j"; options.desc = "Move to window below"; }
       { mode = "n"; key = "<C-k>"; action = "<C-w>k"; options.desc = "Move to window above"; }
@@ -40,6 +42,8 @@
     ];
 
     plugins = {
+      flash.enable = true;
+
       treesitter.enable = true;
 
       oil.enable = true;
@@ -139,8 +143,19 @@
         enable = true;
       };
 
-      lsp-format = {
+      conform-nvim = {
         enable = true;
+        settings = {
+          format_on_save = {
+            lsp_fallback = true;
+            timeout_ms = 500;
+          };
+          formatters_by_ft = {
+            cpp = [ "clang_format" ];
+            nix = [ "nixfmt" ];
+            lua = [ "stylua" ];
+          };
+        };
       };
     };
   };
