@@ -7,8 +7,8 @@ let
 in
 {
   imports = [
-    ./nixvim.nix
-
+    ./programs/fastfetch.nix
+    ./programs/nixvim.nix
   ];
 
   home.activation = {
@@ -94,10 +94,6 @@ in
 
     ".config/tofi"  = {
         source = ./dotfiles/tofi;
-        recursive = true;
-      }; 
-    ".config/fastfetch"  = {
-        source = ./dotfiles/fastfetch;
         recursive = true;
       }; 
 
