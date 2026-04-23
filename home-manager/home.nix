@@ -31,9 +31,8 @@ in
   home.packages = with pkgs; [
     awww.packages.${pkgs.system}.default
     poppler-utils
-    # stremio-linux-shell
-    # stremio
     google-chrome
+    ranger
     yt-dlp
     pass
     pinentry-curses 
