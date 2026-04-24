@@ -2,11 +2,10 @@
 
 let 
   randomWallpaper = import ./scripts/wallpaper.nix {inherit pkgs;};
-  opacityUp       = import ./scripts/opacity-up.nix {inherit pkgs;};
-  opacityDown = import ./scripts/opacity-down.nix {inherit pkgs;};
 in
 {
   imports = [
+    ./programs/zsh.nix
     ./programs/tofi.nix
     ./programs/kitty.nix
     ./programs/fastfetch.nix
@@ -37,8 +36,6 @@ in
     ripgrep
     zoom-us
     randomWallpaper
-    opacityUp  
-    opacityDown
     fastfetch
     gnumake
     nodejs 
@@ -113,14 +110,7 @@ in
     hwdec=vaapi
   '';
 
-  programs.zsh = {
-    enable = true;
-    
-  };
 
-  programs.starship = {
-    enable = true;
-  };
   programs.zathura = {
     enable = true;
     options = {
