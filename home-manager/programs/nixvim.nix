@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 {
   programs.nixvim = {
     globals.mapleader = " ";
@@ -21,9 +21,16 @@
       smartcase = true;
     };
 
+
     # colorschemes.vscode.enable= true;
     # colorschemes.melange.enable= true;
-    colorschemes.kanagawa.enable= true;
+    # colorschemes.kanagawa.enable= true;
+    colorschemes.kanagawa = {
+      enable = true;
+      settings = {
+        transparent = true;
+      };
+    };
     # colorschemes.kanagawa-paper.enable= true;
     # colorschemes.cyberdream.enable= true;
     # colorschemes.rose-pine.enable= true;

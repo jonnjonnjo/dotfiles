@@ -4,6 +4,11 @@
   programs.zsh = {
     enable = true;
     syntaxHighlighting.enable = true;
+
+    shellAliases = {
+      ff = "fastfetch";
+      ll = "ls -la";
+    };  
     
     plugins = [
       {
