@@ -118,9 +118,8 @@
 
 fonts.fontconfig.defaultFonts.sansSerif = [ "Noto Sans CJK SC" ];
  fonts.packages = with pkgs;[
- # nerdfonts 
- noto-fonts-cjk-sans
- noto-fonts-cjk-serif
+ noto-fonts-cjk-sans-static
+ noto-fonts-cjk-serif-static
  ];
 
 

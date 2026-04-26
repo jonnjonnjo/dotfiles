@@ -10,6 +10,7 @@ in
     ./programs/kitty.nix
     ./programs/fastfetch.nix
     ./programs/nixvim.nix
+    ./programs/file-explorer.nix
   ];
 
   home.activation = {
@@ -21,10 +22,11 @@ in
   home.homeDirectory = "/home/jon";
 
   home.packages = with pkgs; [
+    typescript
     awww.packages.${pkgs.system}.default
+    typst
     poppler-utils
     google-chrome
-    ranger
     yt-dlp
     pass
     pinentry-curses 
@@ -128,6 +130,11 @@ in
   };
   
   services.hyprsunset.enable=true;
+  services.udiskie = {
+    enable = true;
+    automount = true;
+  };
+
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release

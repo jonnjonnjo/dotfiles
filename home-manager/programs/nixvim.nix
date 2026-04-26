@@ -53,7 +53,13 @@
 
       treesitter.enable = true;
 
-      oil.enable = true;
+      oil = {
+        enable = true;
+        settings = {
+          view_options.show_hidden=true;
+        };
+      };
+      # oil.enable = true;
 
       telescope = {
         enable = true;
@@ -86,7 +92,8 @@
       comment.enable = true;
 
       which-key = {
-        enable = true;
+        enable = false;
+        # enable = true;
         settings = {
           win = {
             "no_overlap" = true;
@@ -122,13 +129,20 @@
 
       luasnip.enable = true;
       cmp_luasnip.enable = true;
+      typst-vim.enable = true;
 
       lsp = {
         enable = true;
         servers = {
+          yamlls.enable = true;
           lua_ls.enable = true;
+          astro.enable = true;
+          tailwindcss.enable = true;
+          # ts_ls.enable = true;
+          marksman.enable = true;
           nixd.enable = true;
           clangd.enable =  true;
+          tinymist.enable = true;
         };
         keymaps = {
           "<leader>j" = "goto_next";

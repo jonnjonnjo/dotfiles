@@ -7,7 +7,10 @@
 
     shellAliases = {
       ff = "fastfetch";
+      dotf = "cd ~/dotfiles";
       ll = "ls -la";
+      wgu = "wg-quick up";
+      wgd = "wg-quick down";
     };  
     
     plugins = [
@@ -33,6 +36,16 @@
         zvm_yank
         printf %s "''${CUTBUFFER}" | wl-copy -n
         zvm_exit_visual_mode
+      }
+
+      cpp(){
+        local name="''${1%.cpp}"
+        
+        # Changed -std=c++17 to -std=c++23
+        g++ -std=c++23 -O2 -Wall -Wextra -fsanitize=address "$name.cpp" -o "$name"
+        if [ $? -eq 0 ]; then
+          ./"$name"
+        fi
       }
     '';
     
