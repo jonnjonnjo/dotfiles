@@ -21,7 +21,7 @@
   networking.networkmanager.enable = true;
   time.timeZone = "Asia/Jakarta";
 
- nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   
   i18n = {
     inputMethod = {
@@ -62,8 +62,11 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
+
   services.flatpak.enable = true;
+  services.udisks2.enable = true;
   services.pcscd.enable = true;
+  services.gvfs.enable = true;
 
   
 
@@ -108,6 +111,7 @@
   programs.hyprland.enable = true;
   programs.zsh.enable = true;
   environment.systemPackages = with pkgs; [
+   jmtpfs
    texlive.combined.scheme-full
    brightnessctl
    hypridle
@@ -116,10 +120,14 @@
   ];
 
 
-fonts.fontconfig.defaultFonts.sansSerif = [ "Noto Sans CJK SC" ];
+ fonts.fontconfig.defaultFonts.sansSerif = [ "Noto Sans CJK SC" ];
  fonts.packages = with pkgs;[
- noto-fonts-cjk-sans-static
- noto-fonts-cjk-serif-static
+   source-han-serif
+   noto-fonts-cjk-sans-static
+   noto-fonts-cjk-serif-static
+   linux-libertine-g
+   libertine
+   libertinus
  ];
 
 

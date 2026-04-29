@@ -46,7 +46,17 @@
       { mode = "n"; key = "<leader>fg"; action = "<cmd>Telescope live_grep<cr>"; options.desc = "Live grep"; }
       { mode = "n"; key = "<leader>fb"; action = "<cmd>Telescope buffers<cr>"; options.desc = "Find buffers"; }
       { mode = "n"; key = "<leader>e";  action = "<cmd>Oil<cr>"; options.desc = "File explorer"; }
+      { mode = "n"; key = "<leader>gl"; action = "<cmd>lua vim.diagnostic.open_float()<cr>"; options.desc = "Open diagnostic float"; }
+      { mode = "n"; key = "[d";         action = "<cmd>lua vim.diagnostic.goto_prev()<cr>";  options.desc = "Previous diagnostic"; }
+      { mode = "n"; key = "]d";         action = "<cmd>lua vim.diagnostic.goto_next()<cr>";  options.desc = "Next diagnostic"; }
     ];
+
+    diagnostics = {
+      signs = true;
+      underline = true;
+      update_in_insert = false;
+      severity_sort = true;
+    };
 
     plugins = {
       flash.enable = true;
