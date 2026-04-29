@@ -12,7 +12,7 @@
       tabstop = 2;
       expandtab = true;
       wrap = false;
-      scrolloff = 4;
+      scrolloff = 8;
       signcolumn = "yes";
       termguicolors = true;
       updatetime = 250;
@@ -46,9 +46,6 @@
       { mode = "n"; key = "<leader>fg"; action = "<cmd>Telescope live_grep<cr>"; options.desc = "Live grep"; }
       { mode = "n"; key = "<leader>fb"; action = "<cmd>Telescope buffers<cr>"; options.desc = "Find buffers"; }
       { mode = "n"; key = "<leader>e";  action = "<cmd>Oil<cr>"; options.desc = "File explorer"; }
-      { mode = "n"; key = "<leader>gl"; action = "<cmd>lua vim.diagnostic.open_float()<cr>"; options.desc = "Open diagnostic float"; }
-      { mode = "n"; key = "[d";         action = "<cmd>lua vim.diagnostic.goto_prev()<cr>";  options.desc = "Previous diagnostic"; }
-      { mode = "n"; key = "]d";         action = "<cmd>lua vim.diagnostic.goto_next()<cr>";  options.desc = "Next diagnostic"; }
     ];
 
     diagnostics = {
@@ -61,7 +58,15 @@
     plugins = {
       flash.enable = true;
 
-      treesitter.enable = true;
+      fidget.enable = true;
+
+      treesitter = {
+        enable = true;
+        settings = {
+          highlight.enable = true;
+          indent.enable = true;
+        };
+      };
 
       oil = {
         enable = true;
@@ -69,7 +74,6 @@
           view_options.show_hidden=true;
         };
       };
-      # oil.enable = true;
 
       telescope = {
         enable = true;
@@ -82,7 +86,7 @@
 
       lualine = {
         enable = true;
-        settings.options.theme = "onelight";
+        settings.options.theme = "kanagawa";
       };
 
       gitsigns = {
@@ -102,15 +106,11 @@
       comment.enable = true;
 
       which-key = {
-        enable = false;
-        # enable = true;
-        settings = {
-          win = {
-            "no_overlap" = true;
-             padding = "{2,1}";
-             title_post =  "left";
-          };
-
+        enable = true;
+        settings.win = {
+          no_overlap = true;
+          padding = [ 2 1 ];      
+          title_pos = "left";     
         };
       };
 
@@ -118,57 +118,52 @@
 
       indent-blankline.enable = true;
 
-      cmp = {
+      blink-cmp = {
         enable = true;
         settings = {
-          sources = [
-            { name = "nvim_lsp"; }   
-            { name = "luasnip"; }    
-            { name = "buffer"; }     
-            { name = "path"; }       
-          ];
-          mapping = {
-            "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
-            "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
-            "<CR>" = "cmp.mapping.confirm({ select = true })";
-            "<C-Space>" = "cmp.mapping.complete()";
-            "<C-e>" = "cmp.mapping.abort()";
+          keymap.preset = "enter";       
+          signature.enabled = true;        
+          completion.documentation = {
+            auto_show = true;              
+            auto_show_delay_ms = 100;
           };
         };
       };
 
-      luasnip.enable = true;
-      cmp_luasnip.enable = true;
       typst-vim.enable = true;
 
       lsp = {
         enable = true;
+        inlayHints = true;
+
         servers = {
           yamlls.enable = true;
           lua_ls.enable = true;
           astro.enable = true;
           tailwindcss.enable = true;
-          # ts_ls.enable = true;
           marksman.enable = true;
           nixd.enable = true;
-          clangd.enable =  true;
+          clangd.enable = true;
           tinymist.enable = true;
+          ts_ls.enable = true;  
         };
+
         keymaps = {
-          "<leader>j" = "goto_next";
-          "<leader>k" = "goto_prev";
+          lspBuf = {
+            "gd" = "definition";
+            "gr" = "references";
+            "gi" = "implementation";
+            "K"  = "hover";
+            "<leader>rn" = "rename";
+            "<leader>ca" = "code_action";
+          };
+          diagnostic = {
+            "[d" = "goto_prev";
+            "]d" = "goto_next";
+            "<leader>gl" = "open_float";   
+          };
         };
-        lspBuf = {
-          "gd" = "definition";
-          "gr" = "references";
-          "gi" = "implementation";
-          "K"  = "hover";
-          "<leader>rn" = "rename";
-          "<leader>ca" = "code_action";
-        };
-
       };
-
 
       trouble = {
         enable = true;
@@ -178,13 +173,17 @@
         enable = true;
         settings = {
           format_on_save = {
-            lsp_fallback = true;
+            lsp_format = "fallback";  
             timeout_ms = 500;
           };
           formatters_by_ft = {
             cpp = [ "clang_format" ];
             nix = [ "nixfmt" ];
             lua = [ "stylua" ];
+            javascript = [ "prettier" ];
+            typescript = [ "prettier" ];
+            astro = [ "prettier" ];
+            css = [ "prettier" ];
           };
         };
       };

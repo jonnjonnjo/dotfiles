@@ -29,7 +29,7 @@
     ];
 
 
-    initExtra = ''
+    initContent = ''
       zstyle ':autocomplete:*' min-input 0
       zstyle ':autocomplete:*' list-lines 8
       zstyle ':completion:*' completer _expand _complete _files
