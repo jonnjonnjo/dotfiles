@@ -9,11 +9,14 @@
       ff = "fastfetch";
       dot = "cd ~/dotfiles";
       dgit = "git -C ~/dotfiles/";
+      dcommit = "git -C ~/dotfiles commit -am";
+      hms = "home-manager switch --flake ~/dotfiles/home-manager#jon";
+      nrs = "sudo nixos-rebuild switch --flake ~/dotfiles/nixos";
+      hmsf = "git -C ~/dotfiles add -A && home-manager switch --flake ~/dotfiles/home-manager#jon";
+      nrsf = "git -C ~/dotfiles add -A && sudo nixos-rebuild switch --flake ~/dotfiles/nixos";
       wgup = "sudo wg-quick up";
       wgdown = "sudo wg-quick down";
       wgstat = "sudo wg show";
-      hms = "git -C ~/dotfiles add . && home-manager switch --flake ~/dotfiles/home-manager#jon";
-      nrs = "git -C ~/dotfiles add . && sudo nixos-rebuild switch --flake ~/dotfiles/nixos";
       ".." = "cd ..";
       "..." = "cd ../..";
       "...." = "cd ../../..";
