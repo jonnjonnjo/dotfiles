@@ -22,6 +22,7 @@ in
   home.homeDirectory = "/home/jon";
 
   home.packages = with pkgs; [
+    android-tools
     claude-code
     kdePackages.libkscreen  
     wlr-randr        
@@ -86,6 +87,7 @@ in
   home.sessionVariables = {
     QT_SCALE_FACTOR = "1.5";
     EDITOR="nvim";
+    ANDROID_HOME="$HOME/Android/Sdk";
   };
 
   home.pointerCursor = {
