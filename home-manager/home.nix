@@ -22,6 +22,9 @@ in
   home.homeDirectory = "/home/jon";
 
   home.packages = with pkgs; [
+    claude-code
+    kdePackages.libkscreen  
+    wlr-randr        
     typescript
     awww.packages.${pkgs.system}.default
     typst
@@ -110,6 +113,15 @@ in
     gpu-api=vulkan
     target-colorspace-hint=no
     hwdec=vaapi
+  '';
+
+  home.file.".clang-format".text = ''
+    BasedOnStyle: LLVM
+    ColumnLimit: 80
+    AllowShortFunctionsOnASingleLine: None
+    AllowShortBlocksOnASingleLine: Never
+    AllowShortIfStatementsOnASingleLine: Never
+    AllowShortLoopsOnASingleLine: false
   '';
 
 

@@ -1,4 +1,3 @@
-
 { config, lib, pkgs, ... }:
 
 {
@@ -9,13 +8,17 @@
     ];
 
   # Use the systemd-boot EFI boot loader.
+  boot.kernelModules = [ "kvm-amd" ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # for kernel level fix on coloring
-  boot.kernelParams = [ "vt.default_red=0,0,0,0,0,0,0,0" ];
+  boot.kernelParams = [ 
+    "vt.default_red=0,0,0,0,0,0,0,0"
+    "video=HDMI-A-1:1920x1080@60"
+  ];
 
   networking.hostName = "jon-nixos"; 
   networking.networkmanager.enable = true;
@@ -62,12 +65,16 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
-
-  services.flatpak.enable = true;
   services.udisks2.enable = true;
   services.pcscd.enable = true;
   services.gvfs.enable = true;
 
+  services.syncthing = {
+    enable = true;
+    user = "jon";
+    dataDir = "/home/jon";
+    openDefaultPorts = true;
+  };
   
 
   # Configure keymap in X11
@@ -97,20 +104,29 @@
   #   ];
   # };
   users.users.jon = {
-	isNormalUser = true;
-	description = "";
-	extraGroups = [
-		"wheel"
-		"networkmanager"
-    "video"
-	];
+    isNormalUser = true;
+    description = "";
+    extraGroups = [
+      "adbusers"
+      "kvm"
+      "wheel"
+      "networkmanager"
+      "video"
+    ];
   };
 
   users.defaultUserShell =pkgs.zsh;
 
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
   programs.hyprland.enable = true;
   programs.zsh.enable = true;
   environment.systemPackages = with pkgs; [
+   android-studio
+   jdk17
    jmtpfs
    texlive.combined.scheme-full
    brightnessctl
@@ -120,15 +136,69 @@
   ];
 
 
- fonts.fontconfig.defaultFonts.sansSerif = [ "Noto Sans CJK SC" ];
- fonts.packages = with pkgs;[
-   source-han-serif
-   noto-fonts-cjk-sans-static
-   noto-fonts-cjk-serif-static
-   linux-libertine-g
-   libertine
-   libertinus
- ];
+  fonts.fontconfig.defaultFonts.sansSerif = [ "Noto Sans CJK SC" ];
+  fonts.packages = with pkgs; [
+    ibm-plex
+    noto-fonts-cjk-serif-static
+    noto-fonts-cjk-serif
+    arphic-ukai
+    source-han-serif
+    noto-fonts-cjk-sans-static
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
+    source-sans-pro
+    cm_unicode
+    barlow
+    linux-libertine-g
+    libertine
+    iosevka
+    fira-mono
+    libertinus
+    newcomputermodern
+    dejavu_fonts
+    source-serif-pro
+    fira-code
+    roboto
+    lato
+    ubuntu-classic
+    inter
+    inconsolata
+    gyre-fonts
+    xits-math
+    source-code-pro
+    liberation_ttf
+    cascadia-code
+    julia-mono
+    recursive
+    font-awesome
+    hack-font
+    victor-mono
+    monaspace
+    jetbrains-mono
+    wqy_zenhei
+    wqy_microhei
+    hanazono
+    lxgw-wenkai
+    source-han-sans-vf-ttf
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.fira-code
+    nerd-fonts.iosevka
+    nerd-fonts.noto
+    eb-garamond
+    gentium-plus
+    unifont
+  ];
+
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "steam"
+    "steam-unwrapped"
+    "steam-original"
+    "steam-runtime"
+    "android-studio"
+    "zoom"
+    "google-chrome"
+  ];
 
 
 

@@ -137,6 +137,7 @@
         inlayHints = true;
 
         servers = {
+          kotlin_language_server.enable = true;
           yamlls.enable = true;
           lua_ls.enable = true;
           astro.enable = true;
@@ -177,6 +178,7 @@
             timeout_ms = 500;
           };
           formatters_by_ft = {
+            kotlin = ["ktlint"];
             cpp = [ "clang_format" ];
             nix = [ "nixfmt" ];
             lua = [ "stylua" ];

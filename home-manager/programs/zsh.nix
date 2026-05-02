@@ -9,10 +9,11 @@
       ff = "fastfetch";
       dotf = "cd ~/dotfiles";
       ll = "ls -la";
-      wgu = "wg-quick up";
-      wgd = "wg-quick down";
+      wgup = "sudo wg-quick up";
+      wgdown = "sudo wg-quick down";
+      wgstat = "sudo wg show";
       hms = "git -C ~/dotfiles add . && home-manager switch --flake ~/dotfiles/home-manager#jon";
-      nrs = "git -C ~/dotfiles add . && sudo nixos-rebuild switch --flake ~/dotfiles/nixos#jon";
+      nrs = "git -C ~/dotfiles add . && sudo nixos-rebuild switch --flake ~/dotfiles/nixos";
     };  
     
     plugins = [
