@@ -24,6 +24,20 @@
       ll = "ls -la";
       la = "ls -A";
       l = "ls -CF";
+      g = "git";
+      gs = "git status";
+      ga = "git add";
+      gaa = "git add -A";
+      gc = "git commit";
+      gcm = "git commit -m";
+      gp = "git push";
+      gpl = "git pull";
+      gl = "git log --oneline --graph --decorate --all";
+      gd = "git diff";
+      gco = "git checkout";
+      gb = "git branch";
+
+
     };  
     
     plugins = [
