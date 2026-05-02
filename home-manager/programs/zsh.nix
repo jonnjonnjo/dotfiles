@@ -9,7 +9,8 @@
       ff = "fastfetch";
       dot = "cd ~/dotfiles";
       dgit = "git -C ~/dotfiles/";
-      dcommit = "git -C ~/dotfiles commit -am";
+      dcommit = "git -C ~/dotfiles add -A && git -C ~/dotfiles commit -m";
+      dpush = "git -C ~/dotfiles push";
       hms = "home-manager switch --flake ~/dotfiles/home-manager#jon";
       nrs = "sudo nixos-rebuild switch --flake ~/dotfiles/nixos";
       hmsf = "git -C ~/dotfiles add -A && home-manager switch --flake ~/dotfiles/home-manager#jon";
