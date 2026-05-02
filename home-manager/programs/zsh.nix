@@ -7,13 +7,19 @@
 
     shellAliases = {
       ff = "fastfetch";
-      dotf = "cd ~/dotfiles";
-      ll = "ls -la";
+      dot = "cd ~/dotfiles";
+      dgit = "git -C ~/dotfiles/";
       wgup = "sudo wg-quick up";
       wgdown = "sudo wg-quick down";
       wgstat = "sudo wg show";
       hms = "git -C ~/dotfiles add . && home-manager switch --flake ~/dotfiles/home-manager#jon";
       nrs = "git -C ~/dotfiles add . && sudo nixos-rebuild switch --flake ~/dotfiles/nixos";
+      ".." = "cd ..";
+      "..." = "cd ../..";
+      "...." = "cd ../../..";
+      ll = "ls -la";
+      la = "ls -A";
+      l = "ls -CF";
     };  
     
     plugins = [
