@@ -3,9 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    claude-code-nix.url = "github:sadjow/claude-code-nix";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
+  outputs = { self, nixpkgs,home-manager,claude-code-nix, ... }@inputs: {
     nixosConfigurations = {
       "jon-nixos" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -16,6 +17,15 @@
           ./configuration.nix
         ];
       };
+    };
+    homeConfigurations."yourusername" = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      modules = [
+        {
+          nixpkgs.overlays = [ claude-code-nix.overlays.default ];
+        }
+        ./home.nix
+      ];
     };
   };
 }

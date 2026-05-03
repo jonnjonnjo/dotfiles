@@ -22,6 +22,8 @@ in
   home.homeDirectory = "/home/jon";
 
   home.packages = with pkgs; [
+    stremio-linux-shell
+    usbutils 
     android-tools
     claude-code
     kdePackages.libkscreen  

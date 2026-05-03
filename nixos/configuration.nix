@@ -107,6 +107,7 @@
     isNormalUser = true;
     description = "";
     extraGroups = [
+      "plugdev"
       "adbusers"
       "kvm"
       "wheel"
