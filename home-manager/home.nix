@@ -22,6 +22,62 @@ in
   home.homeDirectory = "/home/jon";
 
   home.packages = with pkgs; [
+    python3
+    uv
+    rustup
+    go
+    jdk
+    lua
+    ruby
+    php
+    dotnet-sdk
+    bun
+    deno
+    postgresql
+    sqlite
+    mysql84
+    redis
+    dbeaver-bin
+    jq
+    yq
+    curl
+    httpie
+    docker
+    docker-compose
+    kubectl
+    terraform
+    ansible
+    git-lfs
+    lazygit
+    tmux
+    fzf
+    bat
+    eza
+    fd
+    delta
+    hyperfine
+    tokei
+    direnv
+    strace
+    nmap
+    cmake
+    pkg-config
+    meson
+    ninja
+    zoxide
+    rsync
+    btop
+    ncdu
+    tree
+    imagemagick
+    pandoc
+    tesseract
+    qrencode
+    socat
+    openssl
+    age
+    sops
+    tldr
     stremio-linux-shell
     usbutils 
     android-tools
