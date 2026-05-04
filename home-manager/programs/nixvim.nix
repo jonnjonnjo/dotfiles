@@ -56,6 +56,26 @@
     };
 
     plugins = {
+
+      auto-save = {
+        enable = true;
+        settings = {
+          enabled = true;
+          condition = {
+            __raw = ''
+              function(buf)
+                local ft = vim.bo[buf].filetype
+                local allowed = { "typst" }
+                for _, v in ipairs(allowed) do
+                  if ft == v then return true end
+                end
+                return false
+              end
+            '';
+          };
+        };
+      };
+
       flash.enable = true;
 
       fidget.enable = true;
