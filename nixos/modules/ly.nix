@@ -21,9 +21,9 @@
       # for game of life 
       animation = "gameoflife";
       gameoflife_entropy_interval = 10;
-      # gameoflife_fg = 0x0000FF00;
-      gameoflife_frame_delay = 1;
-      gameoflife_initial_density = 0.8;
+      gameoflife_frame_delay = 3;
+      gameoflife_initial_density = 0.4;
+      gameoflife_fg = "0x00FF8C00";
 
     };
   };
