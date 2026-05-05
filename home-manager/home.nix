@@ -5,6 +5,7 @@ let
 in
 {
   imports = [
+    ./programs/vesktop.nix
     ./programs/zsh.nix
     ./programs/tofi.nix
     ./programs/kitty.nix
@@ -23,6 +24,8 @@ in
 
   home.packages = with pkgs; [
     openssl.dev
+    # discord
+    # vesktop
     pkg-config
     zlib
     libiconv

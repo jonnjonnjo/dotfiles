@@ -4,6 +4,10 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     claude-code-nix.url = "github:sadjow/claude-code-nix";
+    clearvision = {
+      url = "github:ClearVision/ClearVision-v6";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs,home-manager,claude-code-nix, ... }@inputs: {

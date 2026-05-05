@@ -19,6 +19,22 @@
         "type": "github"
       }
     },
+    "clearvision": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1764303527,
+        "narHash": "sha256-l5A/bNNGMHFOtFlLeqdV+QCVfVFZHv9WpVntNNOKwZ8=",
+        "owner": "ClearVision",
+        "repo": "ClearVision-v6",
+        "rev": "7bd83429f30558b2c8349cafbbe03cc8d878752a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ClearVision",
+        "repo": "ClearVision-v6",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -105,6 +121,7 @@
     "root": {
       "inputs": {
         "claude-code-nix": "claude-code-nix",
+        "clearvision": "clearvision",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_3"
       }

@@ -10,6 +10,7 @@
   # Use the systemd-boot EFI boot loader.
   boot.kernelModules = [ "kvm-amd" ];
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 10;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -127,14 +128,15 @@
   programs.hyprland.enable = true;
   programs.zsh.enable = true;
   environment.systemPackages = with pkgs; [
-   android-studio
-   jdk17
-   jmtpfs
-   texlive.combined.scheme-full
-   brightnessctl
-   hypridle
-   hyprsunset
-   hyprcursor
+     efibootmgr 
+     android-studio
+     jdk17
+     jmtpfs
+     texlive.combined.scheme-full
+     brightnessctl
+     hypridle
+     hyprsunset
+     hyprcursor
   ];
 
 
