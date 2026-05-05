@@ -56,8 +56,8 @@
   # i18n.defaultLocale = "en_US.UTF-8";
   console = {
     enable = true;
-    packages = [ pkgs.terminus_font ];
-    font = "ter-v18n";
+    packages = [ pkgs.terminus_font pkgs.kbd ];
+    font = "cp850-8x8";  # 8×8 square cells — fixes rectangular GoL cells
     # keyMap = "us";
     useXkbConfig = true; # use xkb.options in tty.
   };
@@ -65,6 +65,7 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
+  services.flatpak.enable =  true;
   services.udisks2.enable = true;
   services.pcscd.enable = true;
   services.gvfs.enable = true;

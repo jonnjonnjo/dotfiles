@@ -157,7 +157,6 @@ in
     age
     sops
     tldr
-    stremio-linux-shell
     usbutils 
     android-tools
     claude-code
@@ -241,7 +240,15 @@ in
   programs.mpv = {
     enable = true;
     scripts = [ pkgs.mpvScripts.uosc ];
+    scriptOpts = {
+      uosc = {
+        # https://simplelocalize.io/data/locales/
+        languages = "zh-CN,en";
+        # languages = "pt-PT";
+      };
+    };
     bindings = {
+      "ctrl+alt+a" = "script-binding uosc/audio";
       "ctrl+alt+s" = "script-binding uosc/load-subtitles";
       "ctrl+alt+d" = "script-binding uosc/download-subtitles";
     };
