@@ -24,8 +24,19 @@ in
 
   home.packages = with pkgs; [
     openssl.dev
+    # GAME
+    openloco
+    openra
+    # tibia
+    armagetronad
+    cataclysm-dda-git
+    endless-sky
+    openttd
+    # -GAME 
+    # minecraft
     # discord
     # vesktop
+    xrandr
     pkg-config
     zlib
     libiconv
