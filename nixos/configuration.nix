@@ -126,8 +126,21 @@
     dedicatedServer.openFirewall = true;
   };
   programs.hyprland.enable = true;
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    zlib
+    libxml2
+    freetype
+    expat
+    stdenv.cc.cc.lib
+  ];
   programs.zsh.enable = true;
   environment.systemPackages = with pkgs; [
+     zlib
+     libxml2
+     freetype
+     expat
+     stdenv.cc.cc.lib
      efibootmgr 
      android-studio
      jdk17

@@ -5,6 +5,7 @@ let
 in
 {
   imports = [
+    ./programs/mpv.nix
     ./programs/vesktop.nix
     ./programs/zsh.nix
     ./programs/tofi.nix
@@ -251,22 +252,6 @@ in
 
   programs.home-manager.enable = true;
 
-  programs.mpv = {
-    enable = true;
-    scripts = [ pkgs.mpvScripts.uosc ];
-    scriptOpts = {
-      uosc = {
-        # https://simplelocalize.io/data/locales/
-        languages = "zh-CN,en";
-        # languages = "pt-PT";
-      };
-    };
-    bindings = {
-      "ctrl+alt+a" = "script-binding uosc/audio";
-      "ctrl+alt+s" = "script-binding uosc/load-subtitles";
-      "ctrl+alt+d" = "script-binding uosc/download-subtitles";
-    };
-  };
 
   xdg.configFile."mpv/mpv.conf".text = ''
     vo=gpu-next
