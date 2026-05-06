@@ -14,9 +14,9 @@
       "ctrl+alt+a" = "script-binding uosc/audio";
       "ctrl+alt+s" = "script-binding uosc/load-subtitles";
       "ctrl+alt+d" = "script-binding uosc/download-subtitles";
-      # "ctrl+alt+f" = "script-binding mpv-font-picker/print-hello";
-      "ctrl+alt+f" = "script-binding print-hello";
-      "ctrl+alt+F" = "script-binding get_system_fonts";
+      "ctrl+alt+p" = "script-binding print-hello";
+      "ctrl+alt+f" = "script-binding randomized-font";
+      "ctrl+alt+F" = "script-binding select-font";
     };
   };
 
