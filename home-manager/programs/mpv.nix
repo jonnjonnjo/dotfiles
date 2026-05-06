@@ -10,6 +10,9 @@
         # languages = "pt-PT";
       };
     };
+    config = {
+      sub-font = "IBM Plex Sans";
+    };
     bindings = {
       "ctrl+alt+a" = "script-binding uosc/audio";
       "ctrl+alt+s" = "script-binding uosc/load-subtitles";

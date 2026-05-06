@@ -75,7 +75,6 @@ mp.register_script_message('apply-font', function(font)
   mp.osd_message('Subtitle font: ' .. font, 2)
 end)
 
-
 mp.add_key_binding(nil, "print-hello", print_hello)
 mp.add_key_binding(nil, "randomized-font", randomized_font)
 mp.add_key_binding(nil, "select-font", open_font_menu)
