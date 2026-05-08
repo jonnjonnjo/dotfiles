@@ -46,6 +46,7 @@
       { mode = "n"; key = "<leader>fg"; action = "<cmd>Telescope live_grep<cr>"; options.desc = "Live grep"; }
       { mode = "n"; key = "<leader>fb"; action = "<cmd>Telescope buffers<cr>"; options.desc = "Find buffers"; }
       { mode = "n"; key = "<leader>e";  action = "<cmd>Oil<cr>"; options.desc = "File explorer"; }
+      { mode = "n"; key = "<leader>mp"; action = "<cmd>MarkdownPreviewToggle<cr>"; options.desc = "Markdown preview toggle"; }
     ];
 
     diagnostics = {
@@ -188,6 +189,11 @@
 
       trouble = {
         enable = true;
+      };
+
+      markdown-preview = {
+        enable = true;
+        settings.auto_close = 1;
       };
 
       conform-nvim = {

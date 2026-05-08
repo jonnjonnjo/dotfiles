@@ -18,7 +18,7 @@
   };
 
   outputs =
-    { nixpkgs, home-manager,awww, nixvim, ... }:
+    { nixpkgs, home-manager, awww, nixvim, ... }:
     let
       system = "x86_64-linux";
       # pkgs = import nixpkgs {
@@ -42,7 +42,7 @@
 
         ];
 
-        extraSpecialArgs = {inherit awww ;};
+        extraSpecialArgs = { inherit awww; };
       };
     };
 }

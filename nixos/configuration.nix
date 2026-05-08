@@ -28,12 +28,15 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   
   i18n = {
+    defaultLocale = "en_US.UTF-8";
+    supportedLocales = [ "en_US.UTF-8/UTF-8" "zh_CN.UTF-8/UTF-8" ];
     inputMethod = {
       type = "fcitx5";
       enable = true;
       fcitx5.addons = with pkgs; [
         qt6Packages.fcitx5-chinese-addons
         fcitx5-gtk
+        libsForQt5.fcitx5-qt
       ];
     };
   };
@@ -156,7 +159,11 @@
   ];
 
 
-  fonts.fontconfig.defaultFonts.sansSerif = [ "Noto Sans CJK SC" ];
+  fonts.fontconfig.defaultFonts = {
+    sansSerif = [ "Noto Sans CJK SC" "Noto Sans" ];
+    serif     = [ "Noto Serif CJK SC" "Noto Serif" ];
+    emoji     = [ "Noto Color Emoji" ];
+  };
   fonts.packages = with pkgs; [
     ibm-plex
     noto-fonts-cjk-serif-static
