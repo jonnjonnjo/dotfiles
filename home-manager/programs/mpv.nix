@@ -1,7 +1,8 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.mpv = {
     enable = true;
-    scripts = [pkgs.mpvScripts.uosc];
+    scripts = [ pkgs.mpvScripts.uosc ];
     scriptOpts = {
       uosc = {
         # https://simplelocalize.io/data/locales/

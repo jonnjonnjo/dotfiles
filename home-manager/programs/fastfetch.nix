@@ -1,6 +1,8 @@
-{...}: let
+{ ... }:
+let
   esc = builtins.fromJSON ''"\u001b"'';
-in {
+in
+{
   programs.fastfetch = {
     enable = true;
     settings = {

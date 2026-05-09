@@ -1,9 +1,10 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   # Create a Discord application at https://discord.com/developers/applications
   # Name it whatever you want (e.g. "Steam Games"), then paste the Application ID here.
   clientId = "YOUR_DISCORD_APP_CLIENT_ID";
 
-  pythonEnv = pkgs.python3.withPackages (ps: [ps.pypresence]);
+  pythonEnv = pkgs.python3.withPackages (ps: [ ps.pypresence ]);
 
   script = pkgs.writeText "game-rpc.py" ''
     import os
@@ -75,19 +76,20 @@
   gameRpc = pkgs.writeShellScriptBin "game-rpc" ''
     exec ${pythonEnv}/bin/python3 ${script}
   '';
-in {
-  home.packages = [gameRpc];
+in
+{
+  home.packages = [ gameRpc ];
 
   systemd.user.services.game-rpc = {
     Unit = {
       Description = "Discord game presence monitor";
-      After = ["graphical-session.target"];
+      After = [ "graphical-session.target" ];
     };
     Service = {
       ExecStart = "${gameRpc}/bin/game-rpc";
       Restart = "on-failure";
       RestartSec = "5s";
     };
-    Install.WantedBy = ["graphical-session.target"];
+    Install.WantedBy = [ "graphical-session.target" ];
   };
 }

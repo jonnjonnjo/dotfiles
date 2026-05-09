@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   programs.nixvim = {
     globals.mapleader = " ";
     enable = true;
@@ -35,13 +36,21 @@
 
     keymaps = [
       {
-        mode = ["n" "x" "o"];
+        mode = [
+          "n"
+          "x"
+          "o"
+        ];
         key = "s";
         action = "<cmd>lua require('flash').jump()<cr>";
         options.desc = "Flash jump";
       }
       {
-        mode = ["n" "x" "o"];
+        mode = [
+          "n"
+          "x"
+          "o"
+        ];
         key = "S";
         action = "<cmd>lua require('flash').treesitter()<cr>";
         options.desc = "Flash treesitter";
@@ -182,7 +191,10 @@
         enable = true;
         settings.win = {
           no_overlap = true;
-          padding = [2 1];
+          padding = [
+            2
+            1
+          ];
           title_pos = "left";
         };
       };
@@ -256,14 +268,14 @@
             timeout_ms = 500;
           };
           formatters_by_ft = {
-            kotlin = ["ktlint"];
-            cpp = ["clang_format"];
-            nix = ["nixfmt"];
-            lua = ["stylua"];
-            javascript = ["prettier"];
-            typescript = ["prettier"];
-            astro = ["prettier"];
-            css = ["prettier"];
+            kotlin = [ "ktlint" ];
+            cpp = [ "clang_format" ];
+            nix = [ "nixfmt" ];
+            lua = [ "stylua" ];
+            javascript = [ "prettier" ];
+            typescript = [ "prettier" ];
+            astro = [ "prettier" ];
+            css = [ "prettier" ];
           };
         };
       };

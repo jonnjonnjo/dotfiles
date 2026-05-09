@@ -10,32 +10,34 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    claude-code-nix,
-    ...
-  } @ inputs: {
-    nixosConfigurations = {
-      "jon-nixos" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      claude-code-nix,
+      ...
+    }@inputs:
+    {
+      nixosConfigurations = {
+        "jon-nixos" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
 
-        specialArgs = {inherit inputs;};
+          specialArgs = { inherit inputs; };
 
+          modules = [
+            ./configuration.nix
+          ];
+        };
+      };
+      homeConfigurations."yourusername" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [
-          ./configuration.nix
+          {
+            nixpkgs.overlays = [ claude-code-nix.overlays.default ];
+          }
+          ./home.nix
         ];
       };
     };
-    homeConfigurations."yourusername" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
-      modules = [
-        {
-          nixpkgs.overlays = [claude-code-nix.overlays.default];
-        }
-        ./home.nix
-      ];
-    };
-  };
 }

@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -11,11 +12,11 @@
   ];
 
   # Use the systemd-boot EFI boot loader.
-  boot.kernelModules = ["kvm-amd"];
+  boot.kernelModules = [ "kvm-amd" ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 10;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.initrd.kernelModules = ["amdgpu"];
+  boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # for kernel level fix on coloring
@@ -28,11 +29,17 @@
   networking.networkmanager.enable = true;
   time.timeZone = "Asia/Jakarta";
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
-    supportedLocales = ["en_US.UTF-8/UTF-8" "zh_CN.UTF-8/UTF-8"];
+    supportedLocales = [
+      "en_US.UTF-8/UTF-8"
+      "zh_CN.UTF-8/UTF-8"
+    ];
     inputMethod = {
       type = "fcitx5";
       enable = true;
@@ -62,7 +69,10 @@
   # i18n.defaultLocale = "en_US.UTF-8";
   console = {
     enable = true;
-    packages = [pkgs.terminus_font pkgs.kbd];
+    packages = [
+      pkgs.terminus_font
+      pkgs.kbd
+    ];
     font = "cp850-8x8"; # 8×8 square cells — fixes rectangular GoL cells
     # keyMap = "us";
     useXkbConfig = true; # use xkb.options in tty.
@@ -160,9 +170,15 @@
   ];
 
   fonts.fontconfig.defaultFonts = {
-    sansSerif = ["Noto Sans CJK SC" "Noto Sans"];
-    serif = ["Noto Serif CJK SC" "Noto Serif"];
-    emoji = ["Noto Color Emoji"];
+    sansSerif = [
+      "Noto Sans CJK SC"
+      "Noto Sans"
+    ];
+    serif = [
+      "Noto Serif CJK SC"
+      "Noto Serif"
+    ];
+    emoji = [ "Noto Color Emoji" ];
   };
   fonts.packages = with pkgs; [
     ibm-plex
@@ -217,7 +233,8 @@
     unifont
   ];
 
-  nixpkgs.config.allowUnfreePredicate = pkg:
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
     builtins.elem (lib.getName pkg) [
       "steam"
       "steam-unwrapped"
