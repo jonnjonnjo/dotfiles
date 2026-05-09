@@ -1,31 +1,31 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   services.displayManager.ly = {
     enable = true;
     settings = {
       # animation ="dur_file";
       # dur_file_path =  "/home/jon/Downloads/blackhole-smooth-240x67.dur";
       dur_offset_alignment = "center";
-      asterisk = null; 
-      auth_fails = 10; 
+      asterisk = null;
+      auth_fails = 10;
       clock = "%c";
       clear_password = true;
       bigclock = false;
       full_color = 1;
       margin_box_h = 2;
       margin_box_v = 1;
-      text_in_center = true; 
+      text_in_center = true;
       vi_mode = false;
 
-
-      # for game of life 
+      # for game of life
       animation = "gameoflife";
       gameoflife_entropy_interval = 10;
       gameoflife_frame_delay = 3;
       gameoflife_initial_density = 0.4;
       gameoflife_fg = "0x00FF8C00";
-
     };
   };
-
-  }
+}

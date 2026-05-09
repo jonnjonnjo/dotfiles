@@ -1,5 +1,4 @@
-{...}:
-{
+{...}: {
   programs.kitty = {
     enable = true;
     extraConfig = "include current-theme.conf";

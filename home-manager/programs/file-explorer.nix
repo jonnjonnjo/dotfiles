@@ -1,5 +1,4 @@
-{...}:
-{
+{...}: {
   programs.ranger = {
     enable = true;
   };

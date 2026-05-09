@@ -9,7 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     awww = {
-        url="git+https://codeberg.org/LGFae/awww";
+      url = "git+https://codeberg.org/LGFae/awww";
     };
     nixvim = {
       url = "github:nix-community/nixvim";
@@ -17,32 +17,34 @@
     };
   };
 
-  outputs =
-    { nixpkgs, home-manager, awww, nixvim, ... }:
-    let
-      system = "x86_64-linux";
-      # pkgs = import nixpkgs {
-      #   inherit system;
-      #   config.allowUnfreePredicate = pkg: builtins.elem pkg.pname [
-      #     "zoom-us"
-      #   ];
-      # };
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-    in
-    {
-      homeConfigurations."jon" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
-        modules = [ 
-          ./home.nix 
-          nixvim.homeModules.nixvim
-
-        ];
-
-        extraSpecialArgs = { inherit awww; };
-      };
+  outputs = {
+    nixpkgs,
+    home-manager,
+    awww,
+    nixvim,
+    ...
+  }: let
+    system = "x86_64-linux";
+    # pkgs = import nixpkgs {
+    #   inherit system;
+    #   config.allowUnfreePredicate = pkg: builtins.elem pkg.pname [
+    #     "zoom-us"
+    #   ];
+    # };
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
     };
+  in {
+    homeConfigurations."jon" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+
+      modules = [
+        ./home.nix
+        nixvim.homeModules.nixvim
+      ];
+
+      extraSpecialArgs = {inherit awww;};
+    };
+  };
 }

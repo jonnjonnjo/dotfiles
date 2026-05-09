@@ -1,6 +1,4 @@
-{pkgs,...}:
-{
-
+{pkgs, ...}: {
   programs.zsh = {
     enable = true;
     syntaxHighlighting.enable = true;
@@ -36,12 +34,9 @@
       gd = "git diff";
       gco = "git checkout";
       gb = "git branch";
- stremio="GDK_BACKEND=x11 ELECTRON_OZONE_PLATFORM_HINT=x11 stremio";
+      stremio = "GDK_BACKEND=x11 ELECTRON_OZONE_PLATFORM_HINT=x11 stremio";
+    };
 
-
-
-    };  
-    
     plugins = [
       {
         name = "zsh-autocomplete";
@@ -54,7 +49,6 @@
         file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
       }
     ];
-
 
     initContent = ''
       zstyle ':autocomplete:*' min-input 0
@@ -69,7 +63,7 @@
 
       cpp(){
         local name="''${1%.cpp}"
-        
+
         # Changed -std=c++17 to -std=c++23
         g++ -std=c++23 -O2 -Wall -Wextra -fsanitize=address "$name.cpp" -o "$name"
         if [ $? -eq 0 ]; then
@@ -77,7 +71,6 @@
         fi
       }
     '';
-    
   };
 
   programs.starship = {

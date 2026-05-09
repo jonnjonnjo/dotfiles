@@ -1,35 +1,38 @@
-{ config, lib, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./modules/ly.nix
-    ];
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./modules/ly.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = ["kvm-amd"];
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 10;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.initrd.kernelModules = ["amdgpu"];
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # for kernel level fix on coloring
-  boot.kernelParams = [ 
+  boot.kernelParams = [
     "vt.default_red=0,0,0,0,0,0,0,0"
     "video=HDMI-A-1:1920x1080@60"
   ];
 
-  networking.hostName = "jon-nixos"; 
+  networking.hostName = "jon-nixos";
   networking.networkmanager.enable = true;
   time.timeZone = "Asia/Jakarta";
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  
+  nix.settings.experimental-features = ["nix-command" "flakes"];
+
   i18n = {
     defaultLocale = "en_US.UTF-8";
-    supportedLocales = [ "en_US.UTF-8/UTF-8" "zh_CN.UTF-8/UTF-8" ];
+    supportedLocales = ["en_US.UTF-8/UTF-8" "zh_CN.UTF-8/UTF-8"];
     inputMethod = {
       type = "fcitx5";
       enable = true;
@@ -51,7 +54,6 @@
     ];
   };
 
-
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -60,8 +62,8 @@
   # i18n.defaultLocale = "en_US.UTF-8";
   console = {
     enable = true;
-    packages = [ pkgs.terminus_font pkgs.kbd ];
-    font = "cp850-8x8";  # 8×8 square cells — fixes rectangular GoL cells
+    packages = [pkgs.terminus_font pkgs.kbd];
+    font = "cp850-8x8"; # 8×8 square cells — fixes rectangular GoL cells
     # keyMap = "us";
     useXkbConfig = true; # use xkb.options in tty.
   };
@@ -72,7 +74,7 @@
   services.ollama = {
     enable = true;
   };
-  services.flatpak.enable =  true;
+  services.flatpak.enable = true;
   services.udisks2.enable = true;
   services.pcscd.enable = true;
   services.gvfs.enable = true;
@@ -83,7 +85,6 @@
     dataDir = "/home/jon";
     openDefaultPorts = true;
   };
-  
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -124,7 +125,7 @@
     ];
   };
 
-  users.defaultUserShell =pkgs.zsh;
+  users.defaultUserShell = pkgs.zsh;
 
   programs.steam = {
     enable = true;
@@ -142,27 +143,26 @@
   ];
   programs.zsh.enable = true;
   environment.systemPackages = with pkgs; [
-     zlib
-     libxml2
-     freetype
-     expat
-     stdenv.cc.cc.lib
-     efibootmgr 
-     android-studio
-     jdk17
-     jmtpfs
-     texlive.combined.scheme-full
-     brightnessctl
-     hypridle
-     hyprsunset
-     hyprcursor
+    zlib
+    libxml2
+    freetype
+    expat
+    stdenv.cc.cc.lib
+    efibootmgr
+    android-studio
+    jdk17
+    jmtpfs
+    texlive.combined.scheme-full
+    brightnessctl
+    hypridle
+    hyprsunset
+    hyprcursor
   ];
 
-
   fonts.fontconfig.defaultFonts = {
-    sansSerif = [ "Noto Sans CJK SC" "Noto Sans" ];
-    serif     = [ "Noto Serif CJK SC" "Noto Serif" ];
-    emoji     = [ "Noto Color Emoji" ];
+    sansSerif = ["Noto Sans CJK SC" "Noto Sans"];
+    serif = ["Noto Serif CJK SC" "Noto Serif"];
+    emoji = ["Noto Color Emoji"];
   };
   fonts.packages = with pkgs; [
     ibm-plex
@@ -217,17 +217,16 @@
     unifont
   ];
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "steam"
-    "steam-unwrapped"
-    "steam-original"
-    "steam-runtime"
-    "android-studio"
-    "zoom"
-    "google-chrome"
-  ];
-
-
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "steam"
+      "steam-unwrapped"
+      "steam-original"
+      "steam-runtime"
+      "android-studio"
+      "zoom"
+      "google-chrome"
+    ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -271,6 +270,4 @@
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "25.11"; # Did you read the comment?
-
 }
-

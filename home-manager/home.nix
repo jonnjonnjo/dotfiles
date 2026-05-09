@@ -1,9 +1,12 @@
-{ config,awww, lib, pkgs, ... }:
-
-let 
-  randomWallpaper = import ./scripts/wallpaper.nix {inherit pkgs;};
-in
 {
+  config,
+  awww,
+  lib,
+  pkgs,
+  ...
+}: let
+  randomWallpaper = import ./scripts/wallpaper.nix {inherit pkgs;};
+in {
   imports = [
     ./programs/mpv.nix
     ./programs/vesktop.nix
@@ -13,6 +16,7 @@ in
     ./programs/fastfetch.nix
     ./programs/nixvim.nix
     ./programs/file-explorer.nix
+    ./programs/discord-rpc.nix
   ];
 
   home.activation = {
@@ -24,6 +28,7 @@ in
   home.homeDirectory = "/home/jon";
 
   home.packages = with pkgs; [
+    alejandra
     openssl.dev
     # GAME
     openloco
@@ -33,7 +38,7 @@ in
     cataclysm-dda-git
     endless-sky
     openttd
-    # -GAME 
+    # -GAME
     # minecraft
     # discord
     # vesktop
@@ -172,11 +177,11 @@ in
     age
     sops
     tldr
-    usbutils 
+    usbutils
     android-tools
     claude-code
-    kdePackages.libkscreen  
-    wlr-randr        
+    kdePackages.libkscreen
+    wlr-randr
     typescript
     awww.packages.${pkgs.system}.default
     typst
@@ -184,7 +189,7 @@ in
     google-chrome
     yt-dlp
     pass
-    pinentry-curses 
+    pinentry-curses
     aria2
     nsxiv
     jpegoptim
@@ -195,7 +200,7 @@ in
     randomWallpaper
     fastfetch
     gnumake
-    nodejs 
+    nodejs
     yarn
     whois
     vim
@@ -215,46 +220,43 @@ in
     unzip
     hypridle
     zinit
-    
+
     (writeShellScriptBin "f-g" ''
       firefox -P "f-g" --no-remote &
     '')
-    
 
     (writeShellScriptBin "f-o" ''
       firefox -P "f-o" --no-remote &
     '')
   ];
 
-
   home.file = {
-    ".config/hypr"  = {
-        source = ./dotfiles/hypr;
-        recursive = true;
-      };
-
+    ".config/hypr" = {
+      source = ./dotfiles/hypr;
+      recursive = true;
+    };
   };
 
   xdg.configFile."fcitx5/config" = {
     force = true;
     text = ''
-    [Hotkey]
-    # Trigger Input Method
-    TriggerKeys=Super+space
-    EnumerateForwardKeys=
-    EnumerateBackwardKeys=
-    EnumerateSkipFirst=False
-    # Activate Input Method
-    ActivateKeys=
-    # Deactivate Input Method
-    DeactivateKeys=
+      [Hotkey]
+      # Trigger Input Method
+      TriggerKeys=Super+space
+      EnumerateForwardKeys=
+      EnumerateBackwardKeys=
+      EnumerateSkipFirst=False
+      # Activate Input Method
+      ActivateKeys=
+      # Deactivate Input Method
+      DeactivateKeys=
     '';
   };
 
   home.sessionVariables = {
     QT_SCALE_FACTOR = "1.5";
-    EDITOR="nvim";
-    ANDROID_HOME="$HOME/Android/Sdk";
+    EDITOR = "nvim";
+    ANDROID_HOME = "$HOME/Android/Sdk";
   };
 
   home.pointerCursor = {
@@ -264,10 +266,8 @@ in
     name = "Bibata-Modern-Amber";
     size = 24;
   };
-	
 
   programs.home-manager.enable = true;
-
 
   xdg.configFile."mpv/mpv.conf".text = ''
     vo=gpu-next
@@ -285,7 +285,6 @@ in
     AllowShortLoopsOnASingleLine: false
   '';
 
-
   programs.zathura = {
     enable = true;
     options = {
@@ -301,13 +300,12 @@ in
       PASSWORD_STORE_DIR = "${config.home.homeDirectory}/.my-vault";
     };
   };
-  
-  services.hyprsunset.enable=true;
+
+  services.hyprsunset.enable = true;
   services.udiskie = {
     enable = true;
     automount = true;
   };
-
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -318,4 +316,3 @@ in
   # release notes.
   home.stateVersion = "25.11"; # Please read the comment before changing.
 }
-
