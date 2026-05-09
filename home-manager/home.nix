@@ -157,7 +157,7 @@ in
     delta
     hyperfine
     tokei
-    direnv
+    # direnv managed via programs.direnv below
     strace
     nmap
     cmake
@@ -269,6 +269,11 @@ in
   };
 
   programs.home-manager.enable = true;
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 
   xdg.configFile."mpv/mpv.conf".text = ''
     vo=gpu-next
