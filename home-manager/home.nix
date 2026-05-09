@@ -4,9 +4,11 @@
   lib,
   pkgs,
   ...
-}: let
-  randomWallpaper = import ./scripts/wallpaper.nix {inherit pkgs;};
-in {
+}:
+let
+  randomWallpaper = import ./scripts/wallpaper.nix { inherit pkgs; };
+in
+{
   imports = [
     ./programs/mpv.nix
     ./programs/vesktop.nix
@@ -20,7 +22,7 @@ in {
   ];
 
   home.activation = {
-    createNvimUndoDir = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    createNvimUndoDir = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       mkdir -p ${config.home.homeDirectory}/.local/state/nvim/undo
     '';
   };
@@ -28,7 +30,6 @@ in {
   home.homeDirectory = "/home/jon";
 
   home.packages = with pkgs; [
-    alejandra
     openssl.dev
     # GAME
     openloco

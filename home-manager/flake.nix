@@ -2,7 +2,6 @@
   description = "Home Manager configuration of jon";
 
   inputs = {
-    # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -15,36 +14,51 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-  };
-
-  outputs = {
-    nixpkgs,
-    home-manager,
-    awww,
-    nixvim,
-    ...
-  }: let
-    system = "x86_64-linux";
-    # pkgs = import nixpkgs {
-    #   inherit system;
-    #   config.allowUnfreePredicate = pkg: builtins.elem pkg.pname [
-    #     "zoom-us"
-    #   ];
-    # };
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-    };
-  in {
-    homeConfigurations."jon" = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-
-      modules = [
-        ./home.nix
-        nixvim.homeModules.nixvim
-      ];
-
-      extraSpecialArgs = {inherit awww;};
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
+
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      awww,
+      nixvim,
+      pre-commit-hooks,
+      ...
+    }:
+    let
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    in
+    {
+      homeConfigurations."jon" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+
+        modules = [
+          ./home.nix
+          nixvim.homeModules.nixvim
+        ];
+
+        extraSpecialArgs = { inherit awww; };
+      };
+
+      checks.x86_64-linux.pre-commit-check = pre-commit-hooks.lib.x86_64-linux.run {
+        src = ./.;
+        hooks = {
+          nixfmt-rfc-style.enable = true;
+        };
+      };
+
+      devShells.x86_64-linux.default = pkgs.mkShell {
+        inherit (self.checks.x86_64-linux.pre-commit-check) shellHook;
+        buildInputs = self.checks.x86_64-linux.pre-commit-check.enabledPackages;
+      };
+    };
 }
