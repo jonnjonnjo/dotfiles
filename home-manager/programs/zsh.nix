@@ -10,9 +10,9 @@
       dgit = "git -C ~/dotfiles/";
       dcommit = "git -C ~/dotfiles add -A && git -C ~/dotfiles commit -m";
       dpush = "git -C ~/dotfiles push";
-      hms = "home-manager switch --flake ~/dotfiles/home-manager#jon";
+      hms = "home-manager switch --flake ~/dotfiles/home-manager#jon && exec zsh";
       nrs = "sudo nixos-rebuild switch --flake ~/dotfiles/nixos";
-      hmsf = "git -C ~/dotfiles add -A && home-manager switch --flake ~/dotfiles/home-manager#jon";
+      hmsf = "git -C ~/dotfiles add -A && home-manager switch --flake ~/dotfiles/home-manager#jon && exec zsh";
       nrsf = "git -C ~/dotfiles add -A && sudo nixos-rebuild switch --flake ~/dotfiles/nixos";
       wgup = "sudo wg-quick up";
       wgdown = "sudo wg-quick down";
@@ -54,7 +54,7 @@
     initContent = ''
       zstyle ':autocomplete:*' min-input 0
       zstyle ':autocomplete:*' list-lines 8
-      zstyle ':completion:*' completer _expand _complete _files
+      zstyle ':completion:*' completer _complete _files
 
       zvm_vi_yank () {
         zvm_yank
