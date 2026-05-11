@@ -221,6 +221,7 @@ in
     unzip
     hypridle
     zinit
+    glow
 
     (writeShellScriptBin "f-g" ''
       firefox -P "f-g" --no-remote &
@@ -236,22 +237,6 @@ in
       source = ./dotfiles/hypr;
       recursive = true;
     };
-  };
-
-  xdg.configFile."fcitx5/config" = {
-    force = true;
-    text = ''
-      [Hotkey]
-      # Trigger Input Method
-      TriggerKeys=Super+space
-      EnumerateForwardKeys=
-      EnumerateBackwardKeys=
-      EnumerateSkipFirst=False
-      # Activate Input Method
-      ActivateKeys=
-      # Deactivate Input Method
-      DeactivateKeys=
-    '';
   };
 
   home.sessionVariables = {
