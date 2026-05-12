@@ -114,6 +114,26 @@
         "type": "github"
       }
     },
+    "jzw": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1778595479,
+        "narHash": "sha256-TyyS5P6KN8RvSuwBECJLfHNL85utH0jn50T0QVnrydg=",
+        "owner": "jonnjonnjo",
+        "repo": "kmp-zhongwen-fanyi",
+        "rev": "cdcf3698e21d18e97f9fb489dae856b8d7e8719f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jonnjonnjo",
+        "repo": "kmp-zhongwen-fanyi",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1763934636,
@@ -194,6 +214,7 @@
       "inputs": {
         "awww": "awww",
         "home-manager": "home-manager",
+        "jzw": "jzw",
         "nixpkgs": "nixpkgs_2",
         "nixvim": "nixvim",
         "pre-commit-hooks": "pre-commit-hooks"

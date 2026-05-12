@@ -1,6 +1,7 @@
 {
   config,
   awww,
+  jzw,
   lib,
   pkgs,
   ...
@@ -30,6 +31,7 @@ in
   home.homeDirectory = "/home/jon";
 
   home.packages = with pkgs; [
+    jzw.packages.${pkgs.system}.default
     openssl.dev
     # GAME
     openloco

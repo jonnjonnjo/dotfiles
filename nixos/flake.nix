@@ -8,6 +8,10 @@
       url = "github:ClearVision/ClearVision-v6";
       flake = false;
     };
+    jzw = {
+      url = "github:jonnjonnjo/kmp-zhongwen-fanyi";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

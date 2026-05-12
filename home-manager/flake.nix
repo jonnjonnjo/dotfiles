@@ -18,6 +18,10 @@
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    jzw = {
+      url = "github:jonnjonnjo/kmp-zhongwen-fanyi";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -26,6 +30,7 @@
       nixpkgs,
       home-manager,
       awww,
+      jzw,
       nixvim,
       pre-commit-hooks,
       ...
@@ -46,7 +51,7 @@
           nixvim.homeModules.nixvim
         ];
 
-        extraSpecialArgs = { inherit awww; };
+        extraSpecialArgs = { inherit awww jzw; };
       };
 
       checks.x86_64-linux.pre-commit-check = pre-commit-hooks.lib.x86_64-linux.run {
