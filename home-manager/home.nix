@@ -240,6 +240,10 @@ in
       source = ./dotfiles/hypr;
       recursive = true;
     };
+    ".config/nvim/templates" = {
+      source = ../templates;
+      recursive = true;
+    };
   };
 
   home.sessionVariables = {
