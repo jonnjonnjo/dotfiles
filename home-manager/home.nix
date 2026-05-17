@@ -213,7 +213,6 @@ in
     grim
     slurp
     wl-clipboard
-    wl-clip-persist
     git
     wireguard-tools
     gcc
