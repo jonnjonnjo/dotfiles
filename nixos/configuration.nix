@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   pkgs,
   ...
@@ -81,9 +80,6 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
-  services.ollama = {
-    enable = true;
-  };
   services.flatpak.enable = true;
   services.udisks2.enable = true;
   services.pcscd.enable = true;

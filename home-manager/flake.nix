@@ -19,7 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     jzw = {
-      url = "github:jonnjonnjo/kmp-zhongwen-fanyi";
+      url = "github:jonnjonnjo/kmp-zhongwen-fanyi/dev";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

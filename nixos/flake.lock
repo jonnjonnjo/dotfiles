@@ -70,6 +70,27 @@
         "type": "indirect"
       }
     },
+    "jzw": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1779119732,
+        "narHash": "sha256-Df27PgPFEHj63dV3U6NRtrTDeyV01Lg3T32zm4hfdLg=",
+        "owner": "jonnjonnjo",
+        "repo": "kmp-zhongwen-fanyi",
+        "rev": "d46d2a17efc60e4ba33727c5e216bff48fc95981",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jonnjonnjo",
+        "ref": "dev",
+        "repo": "kmp-zhongwen-fanyi",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1777425547,
@@ -123,6 +144,7 @@
         "claude-code-nix": "claude-code-nix",
         "clearvision": "clearvision",
         "home-manager": "home-manager",
+        "jzw": "jzw",
         "nixpkgs": "nixpkgs_3"
       }
     },

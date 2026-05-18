@@ -9,14 +9,13 @@
       flake = false;
     };
     jzw = {
-      url = "github:jonnjonnjo/kmp-zhongwen-fanyi";
+      url = "github:jonnjonnjo/kmp-zhongwen-fanyi/dev";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs =
     {
-      self,
       nixpkgs,
       home-manager,
       claude-code-nix,

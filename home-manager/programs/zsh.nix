@@ -56,6 +56,9 @@
       zstyle ':autocomplete:*' list-lines 8
       zstyle ':completion:*' completer _complete _files
 
+
+      [ -f ~/.config/jzw/env ] && source ~/.config/jzw/env  
+
       zvm_vi_yank () {
         zvm_yank
         printf %s "''${CUTBUFFER}" | wl-copy -n
