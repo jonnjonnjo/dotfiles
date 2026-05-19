@@ -48,7 +48,7 @@ nix flake check ./nixos
 
 ### `nixos/`
 - `flake.nix` — pulls nixos-unstable + claude-code-nix + ClearVision theme flake
-- `configuration.nix` — system-level config: boot (AMD GPU + systemd-boot), networking, Hyprland, Steam, Ollama, Syncthing, Flatpak, fonts, user `jon`. Also: `i18n.inputMethod` enables fcitx5 with `qt6Packages.fcitx5-chinese-addons` (zh_CN locale + extensive CJK fonts declared in `fonts.packages`). `programs.nix-ld` is enabled for running non-Nix dynamic binaries.
+- `configuration.nix` — system-level config: boot (AMD GPU + systemd-boot), networking, Hyprland, Steam, Syncthing, Flatpak, fonts, user `jon`. Also: `i18n.inputMethod` enables fcitx5 with `qt6Packages.fcitx5-chinese-addons` (zh_CN locale + extensive CJK fonts declared in `fonts.packages`). `programs.nix-ld` is enabled for running non-Nix dynamic binaries.
 - `hardware-configuration.nix` — hardware scan output (do not edit manually)
 - `modules/ly.nix` — ly display manager with Game of Life animation (asset at `modules/ly-animation/`)
 

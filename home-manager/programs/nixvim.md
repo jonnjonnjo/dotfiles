@@ -36,7 +36,7 @@ Companion to `nixvim.nix`. Two parts:
 | **flash.nvim** | jump anywhere with `s` / treesitter-aware jump with `S` |
 | **telescope** + fzf-native | fuzzy finder for files / grep / buffers |
 | **oil.nvim** | edit the filesystem like a buffer (`<leader>e`) |
-| **blink-cmp** | completion (Enter to accept, signature help, auto docs after 100 ms) |
+| **blink-cmp** | completion (Tab/S-Tab to select, Enter to accept, signature help, auto docs after 100 ms) |
 | **treesitter** | syntax-aware highlight + indent |
 | **gitsigns** | git diff in signcolumn (add/change/delete markers) |
 | **lualine** | statusline (kanagawa theme) |

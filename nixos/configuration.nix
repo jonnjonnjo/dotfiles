@@ -80,6 +80,17 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
+  services.postgresql = {
+    enable = true;
+    ensureUsers = [
+      {
+        name = "jon";
+        ensureDBOwnership = true;
+      }
+    ];
+    ensureDatabases = [ "jon" ];
+  };
+
   services.flatpak.enable = true;
   services.udisks2.enable = true;
   services.pcscd.enable = true;

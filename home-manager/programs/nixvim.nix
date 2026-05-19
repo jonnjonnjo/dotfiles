@@ -218,6 +218,7 @@
         enable = true;
         settings = {
           highlight.enable = true;
+          auyto_install = true;
           indent.enable = true;
         };
       };
@@ -278,12 +279,36 @@
       blink-cmp = {
         enable = true;
         settings = {
-          keymap.preset = "enter";
-          signature.enabled = true;
-          completion.documentation = {
-            auto_show = true;
-            auto_show_delay_ms = 100;
+          keymap = {
+            preset = "default";
+            "<Tab>" = [
+              "select_next"
+              "fallback"
+            ];
+            "<S-Tab>" = [
+              "select_prev"
+              "fallback"
+            ];
+            "<CR>" = [
+              "accept"
+              "fallback"
+            ];
           };
+          sources.default = [
+            "lsp"
+            "path"
+            "snippets"
+            "buffer"
+          ];
+          signature.enabled = true;
+          completion = {
+            ghost_text.enabled = true;
+            documentation = {
+              auto_show = true;
+              auto_show_delay_ms = 100;
+            };
+          };
+          appearance.nerd_font_variant = "mono";
         };
       };
 
@@ -294,6 +319,7 @@
         inlayHints = true;
 
         servers = {
+          emmet_language_server.enable = true;
           kotlin_language_server.enable = true;
           yamlls.enable = true;
           lua_ls.enable = true;

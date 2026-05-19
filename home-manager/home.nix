@@ -31,6 +31,10 @@ in
   home.homeDirectory = "/home/jon";
 
   home.packages = with pkgs; [
+    prisma
+    prisma-engines
+    httpie
+    hurl
     jzw.packages.${pkgs.system}.default
     openssl.dev
     # GAME
@@ -183,6 +187,7 @@ in
     usbutils
     android-tools
     claude-code
+    gemini-cli
     kdePackages.libkscreen
     wlr-randr
     typescript
