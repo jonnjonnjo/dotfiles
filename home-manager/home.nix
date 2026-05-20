@@ -229,6 +229,7 @@ in
     hypridle
     zinit
     glow
+    bluetuith
 
     (writeShellScriptBin "f-g" ''
       firefox -P "f-g" --no-remote &
