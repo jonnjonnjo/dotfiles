@@ -2,13 +2,22 @@
 {
   programs.kitty = {
     enable = true;
-    extraConfig = "include current-theme.conf";
+    themeFile = "Catppuccin-Mocha";
     settings = {
+      font_family = "JetBrains Mono";
+      font_size = "13.0";
       dynamic_background_opacity = "yes";
-      background_opacity = "0.80";
-      window_padding_width = "8 10";
+      background_opacity = "0.92";
+      window_padding_width = "16 20";
+      cursor_shape = "beam";
+      cursor_blink_interval = "0.5";
+      scrollback_lines = 10000;
+      tab_bar_style = "powerline";
+      tab_powerline_style = "slanted";
       tab_title_max_length = 25;
       tab_title_template = "{title}";
+      url_style = "curly";
+      copy_on_select = "yes";
     };
     keybindings = {
       "super+equal" = "set_background_opacity +0.1";

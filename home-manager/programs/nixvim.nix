@@ -21,18 +21,22 @@
       smartcase = true;
     };
 
-    # colorschemes.vscode.enable= true;
-    # colorschemes.melange.enable= true;
-    # colorschemes.kanagawa.enable= true;
-    colorschemes.kanagawa = {
+    colorschemes.catppuccin = {
       enable = true;
       settings = {
-        transparent = true;
+        flavour = "mocha";
+        transparent_background = true;
+        integrations = {
+          telescope.enabled = true;
+          which_key = true;
+          gitsigns = true;
+          indent_blankline.enabled = true;
+          blink_cmp = true;
+          treesitter = true;
+          lsp_trouble = true;
+        };
       };
     };
-    # colorschemes.kanagawa-paper.enable= true;
-    # colorschemes.cyberdream.enable= true;
-    # colorschemes.rose-pine.enable= true;
 
     keymaps = [
       {
@@ -241,7 +245,7 @@
 
       lualine = {
         enable = true;
-        settings.options.theme = "kanagawa";
+        settings.options.theme = "catppuccin";
       };
 
       gitsigns = {
