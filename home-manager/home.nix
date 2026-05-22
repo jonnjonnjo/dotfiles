@@ -226,6 +226,7 @@ in
     powerline
     hyprlock
     unzip
+    zip
     hypridle
     zinit
     glow
