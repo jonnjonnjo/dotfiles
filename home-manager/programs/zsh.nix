@@ -6,6 +6,7 @@
 
     shellAliases = {
       ff = "fastfetch";
+      ra = "ranger";
       dot = "cd ~/dotfiles";
       dgit = "git -C ~/dotfiles/";
       dcommit = "git -C ~/dotfiles add -A && git -C ~/dotfiles commit -m";

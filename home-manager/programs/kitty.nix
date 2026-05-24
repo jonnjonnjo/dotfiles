@@ -4,7 +4,7 @@
     enable = true;
     themeFile = "Catppuccin-Mocha";
     settings = {
-      font_family = "JetBrains Mono";
+      font_family = "Iosevka";
       font_size = "13.0";
       dynamic_background_opacity = "yes";
       background_opacity = "0.92";

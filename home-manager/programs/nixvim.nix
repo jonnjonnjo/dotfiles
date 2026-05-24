@@ -130,7 +130,6 @@
           prompt_title = "CP Templates",
           cwd = TEMPLATE_DIR,
           find_command = { "ls", "-1r" },
-          sorter = require("telescope.sorters").empty(),
           attach_mappings = function(prompt_bufnr, _)
             local actions = require("telescope.actions")
             local action_state = require("telescope.actions.state")
@@ -160,7 +159,6 @@
           prompt_title = "CP Templates",
           cwd = TEMPLATE_DIR,
           find_command = { "ls", "-1r" },
-          sorter = require("telescope.sorters").empty(),
           attach_mappings = function(prompt_bufnr, _)
             local actions = require("telescope.actions")
             local action_state = require("telescope.actions.state")
