@@ -8,6 +8,7 @@
 }:
 let
   randomWallpaper = import ./scripts/wallpaper.nix { inherit pkgs; };
+  brightnessControl = import ./scripts/brightness.nix { inherit pkgs; };
 in
 {
   imports = [
@@ -206,6 +207,7 @@ in
     ripgrep
     zoom-us
     randomWallpaper
+    brightnessControl
     fastfetch
     gnumake
     nodejs
