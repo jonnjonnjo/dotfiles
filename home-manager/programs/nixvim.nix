@@ -113,6 +113,18 @@
         action = "<cmd>MarkdownPreviewToggle<cr>";
         options.desc = "Markdown preview toggle";
       }
+      {
+        mode = "n";
+        key = "<leader>sv";
+        action = "<cmd>vsp<cr>";
+        options.desc = "Vertical split";
+      }
+      {
+        mode = "n";
+        key = "<leader>sh";
+        action = "<cmd>sp<cr>";
+        options.desc = "Horizontal split";
+      }
     ];
 
     diagnostics = {
