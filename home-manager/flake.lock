@@ -121,16 +121,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1779123520,
-        "narHash": "sha256-J3y3TE/9RX0En6i6d2OlYIC6qKQ87zPuVmR4p/mHp+o=",
+        "lastModified": 1779722933,
+        "narHash": "sha256-DEUZlP53kj3uLrBk0Sw4v1cye35rPcZFthXJoAhfd4s=",
         "owner": "jonnjonnjo",
         "repo": "kmp-zhongwen-fanyi",
-        "rev": "3879de3dc414c0375c357396f0bd8cbd0a9381ba",
+        "rev": "a5d0e3d69e6c78f65c43754bc74a92951e2236ba",
         "type": "github"
       },
       "original": {
         "owner": "jonnjonnjo",
-        "ref": "dev",
+        "ref": "main",
         "repo": "kmp-zhongwen-fanyi",
         "type": "github"
       }

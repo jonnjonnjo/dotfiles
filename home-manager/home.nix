@@ -32,6 +32,8 @@ in
   home.homeDirectory = "/home/jon";
 
   home.packages = with pkgs; [
+    cliphist
+    rofi
     prisma
     prisma-engines
     httpie
