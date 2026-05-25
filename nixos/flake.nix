@@ -9,7 +9,7 @@
       flake = false;
     };
     jzw = {
-      url = "github:jonnjonnjo/kmp-zhongwen-fanyi/dev";
+      url = "github:jonnjonnjo/kmp-zhongwen-fanyi";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
