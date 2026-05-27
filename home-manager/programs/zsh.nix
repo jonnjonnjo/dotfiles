@@ -66,6 +66,16 @@
         zvm_exit_visual_mode
       }
 
+      nfu() {
+        if [ -n "$1" ]; then
+          (cd ~/dotfiles/home-manager && nix flake update "$@")
+          (cd ~/dotfiles/nixos && nix flake update "$@")
+        else
+          (cd ~/dotfiles/home-manager && nix flake update)
+          (cd ~/dotfiles/nixos && nix flake update)
+        fi
+      }
+
       cpp(){
         local name="''${1%.cpp}"
 

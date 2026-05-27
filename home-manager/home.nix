@@ -32,6 +32,7 @@ in
   home.homeDirectory = "/home/jon";
 
   home.packages = with pkgs; [
+    pnpm
     cliphist
     rofi
     prisma

@@ -49,6 +49,7 @@
         modules = [
           ./home.nix
           nixvim.homeModules.nixvim
+          { programs.nixvim.nixpkgs.source = nixpkgs; }
         ];
 
         extraSpecialArgs = { inherit awww jzw; };
