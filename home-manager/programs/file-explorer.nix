@@ -7,8 +7,4 @@
       preview_images_method = "kitty";
     };
   };
-  programs.yazi = {
-    enable = true;
-    shellWrapperName = "yy";
-  };
 }
