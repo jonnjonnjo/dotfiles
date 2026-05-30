@@ -18,6 +18,7 @@
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    claude-code-nix.url = "github:sadjow/claude-code-nix";
     jzw = {
       url = "github:jonnjonnjo/kmp-zhongwen-fanyi/main";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,6 +34,7 @@
       jzw,
       nixvim,
       pre-commit-hooks,
+      claude-code-nix,
       ...
     }:
     let
@@ -40,6 +42,7 @@
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
+        overlays = [ claude-code-nix.overlays.default ];
       };
     in
     {

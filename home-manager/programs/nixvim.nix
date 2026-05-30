@@ -3,6 +3,7 @@
   programs.nixvim = {
     globals.mapleader = " ";
     enable = true;
+    version.enableNixpkgsReleaseCheck = false;
 
     opts = {
       number = true;
@@ -20,6 +21,19 @@
       ignorecase = true;
       smartcase = true;
     };
+
+    # In Oil's confirmation popup, map <CR> to confirm (alongside the default y/Y/o/O).
+    autoCmd = [
+      {
+        event = "FileType";
+        pattern = "oil_preview";
+        callback.__raw = ''
+          function(args)
+            vim.keymap.set("n", "<CR>", "y", { buffer = args.buf, remap = true, nowait = true })
+          end
+        '';
+      }
+    ];
 
     colorschemes.catppuccin = {
       enable = true;
