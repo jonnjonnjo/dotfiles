@@ -237,6 +237,7 @@ in
     zinit
     glow
     bluetuith
+    emote
 
     (writeShellScriptBin "f-g" ''
       firefox -P "f-g" --no-remote &

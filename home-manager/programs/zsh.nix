@@ -53,44 +53,40 @@
     ];
 
     initContent = ''
-      zstyle ':autocomplete:*' min-input 0
-      zstyle ':autocomplete:*' list-lines 8
-      zstyle ':completion:*' completer _complete _files
+            zstyle ':autocomplete:*' min-input 0
+            zstyle ':autocomplete:*' list-lines 8
+            zstyle ':completion:*' completer _complete _files
 
-
-      gcmp() {
-        git commit -m "$*" && git push
-      }
 
       [ -f ~/.config/jzw/env ] && source ~/.config/jzw/env  
 
-      setopt AUTO_CD
+            setopt AUTO_CD
 
-      zvm_vi_yank () {
-        zvm_yank
-        printf %s "''${CUTBUFFER}" | wl-copy -n
-        zvm_exit_visual_mode
-      }
+            zvm_vi_yank () {
+              zvm_yank
+              printf %s "''${CUTBUFFER}" | wl-copy -n
+              zvm_exit_visual_mode
+            }
 
-      nfu() {
-        if [ -n "$1" ]; then
-          (cd ~/dotfiles/home-manager && nix flake update "$@")
-          (cd ~/dotfiles/nixos && nix flake update "$@")
-        else
-          (cd ~/dotfiles/home-manager && nix flake update)
-          (cd ~/dotfiles/nixos && nix flake update)
-        fi
-      }
+            nfu() {
+              if [ -n "$1" ]; then
+                (cd ~/dotfiles/home-manager && nix flake update "$@")
+                (cd ~/dotfiles/nixos && nix flake update "$@")
+              else
+                (cd ~/dotfiles/home-manager && nix flake update)
+                (cd ~/dotfiles/nixos && nix flake update)
+              fi
+            }
 
-      cpp(){
-        local name="''${1%.cpp}"
+            cpp(){
+              local name="''${1%.cpp}"
 
-        # Changed -std=c++17 to -std=c++23
-        g++ -std=c++23 -O2 -Wall -Wextra -fsanitize=address "$name.cpp" -o "$name"
-        if [ $? -eq 0 ]; then
-          ./"$name"
-        fi
-      }
+              # Changed -std=c++17 to -std=c++23
+              g++ -std=c++23 -O2 -Wall -Wextra -fsanitize=address "$name.cpp" -o "$name"
+              if [ $? -eq 0 ]; then
+                ./"$name"
+              fi
+            }
     '';
   };
 
