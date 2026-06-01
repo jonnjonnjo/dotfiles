@@ -139,6 +139,12 @@
         action = "<cmd>sp<cr>";
         options.desc = "Horizontal split";
       }
+      {
+        mode = "n";
+        key = "<leader>nh";
+        action = "<cmd>nohlsearch<cr>";
+        options.desc = "Clear search highlights";
+      }
     ];
 
     diagnostics = {

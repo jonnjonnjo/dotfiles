@@ -32,6 +32,7 @@ in
   home.homeDirectory = "/home/jon";
 
   home.packages = with pkgs; [
+    opencode
     pnpm
     cliphist
     rofi
@@ -261,6 +262,11 @@ in
     QT_SCALE_FACTOR = "1.5";
     EDITOR = "nvim";
     ANDROID_HOME = "$HOME/Android/Sdk";
+    # Prisma engine binaries (NixOS doesn't support precompiled downloads)
+    PRISMA_SCHEMA_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/schema-engine";
+    PRISMA_QUERY_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/query-engine";
+    PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines}/lib/libquery_engine.node";
+    PRISMA_FMT_BINARY = "${pkgs.prisma-engines}/bin/prisma-fmt";
   };
 
   home.pointerCursor = {
@@ -323,5 +329,6 @@ in
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
+  home.enableNixpkgsReleaseCheck = false;
   home.stateVersion = "25.11"; # Please read the comment before changing.
 }

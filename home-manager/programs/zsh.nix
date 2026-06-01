@@ -58,7 +58,13 @@
       zstyle ':completion:*' completer _complete _files
 
 
+      gcmp() {
+        git commit -m "$*" && git push
+      }
+
       [ -f ~/.config/jzw/env ] && source ~/.config/jzw/env  
+
+      setopt AUTO_CD
 
       zvm_vi_yank () {
         zvm_yank
