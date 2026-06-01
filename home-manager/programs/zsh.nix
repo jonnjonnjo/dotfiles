@@ -37,6 +37,7 @@
       gco = "git checkout";
       gb = "git branch";
       stremio = "GDK_BACKEND=x11 ELECTRON_OZONE_PLATFORM_HINT=x11 stremio";
+      tclock = "peaclock --config-dir ~/.config/peaclock";
     };
 
     plugins = [

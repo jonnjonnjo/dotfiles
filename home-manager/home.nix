@@ -21,6 +21,9 @@ in
     ./programs/nixvim.nix
     ./programs/file-explorer.nix
     ./programs/discord-rpc.nix
+    ./programs/mako.nix
+    ./programs/battery-monitor.nix
+    ./programs/peaclock.nix
   ];
 
   home.activation = {
@@ -54,6 +57,7 @@ in
     # minecraft
     # discord
     # vesktop
+    peaclock
     xrandr
     pkg-config
     zlib
