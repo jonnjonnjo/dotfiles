@@ -17,6 +17,7 @@
       style inactive-fg 240
       style colon-fg 51
       style date 51
+      timer-exec 'notify-send -a peaclock "time is up!"'
     '';
   };
 }

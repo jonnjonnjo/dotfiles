@@ -15,25 +15,33 @@ let
       status=$(echo "$info" | awk -F'[,:]' '{print $2}' | xargs)
       prev=$(cat "$STATE")
 
-      if echo "$status" | grep -qi "discharging"; then
-        cur="unset"
-        [ "$pct" -le 20 ] && cur="20"
-        [ "$pct" -le 10 ] && cur="10"
-        [ "$pct" -le 5  ] && cur="5"
+       if echo "$status" | grep -qi "discharging"; then
+         cur="unset"
+         [ "$pct" -le 58 ] && cur="58"  # For testing
+         [ "$pct" -le 45 ] && cur="45"  # For testing - you should see this soon!
+         [ "$pct" -le 20 ] && cur="20"
+         [ "$pct" -le 10 ] && cur="10"
+         [ "$pct" -le 5  ] && cur="5"
 
-        if [ "$cur" != "$prev" ]; then
-          case "$cur" in
-            5)
-              ${pkgs.libnotify}/bin/notify-send -u critical -t 0 "Battery Critical" "Battery at $pct% — about to die!"
-              ;;
-            10)
-              ${pkgs.libnotify}/bin/notify-send -u critical -t 10000 "Battery Low" "Battery at $pct% — plug in soon!"
-              ;;
-            20)
-              ${pkgs.libnotify}/bin/notify-send -u normal -t 5000 "Battery Warning" "Battery at $pct%"
-              ;;
-          esac
-          echo "$cur" > "$STATE"
+         if [ "$cur" != "$prev" ]; then
+           case "$cur" in
+             5)
+               ${pkgs.libnotify}/bin/notify-send -u critical -t 0 "Battery Critical" "Battery at $pct% — about to die!"
+               ;;
+             10)
+               ${pkgs.libnotify}/bin/notify-send -u critical -t 10000 "Battery Low" "Battery at $pct% — plug in soon!"
+               ;;
+             20)
+               ${pkgs.libnotify}/bin/notify-send -u normal -t 5000 "Battery Warning" "Battery at $pct%"
+               ;;
+             45)
+               ${pkgs.libnotify}/bin/notify-send -u normal -t 5000 "Battery Test 45%" "Battery at $pct% — You can trust me now!"
+               ;;
+             58)
+               ${pkgs.libnotify}/bin/notify-send -u normal -t 5000 "Battery Test 58%" "Battery at $pct% — Testing notification!"
+               ;;
+           esac
+           echo "$cur" > "$STATE"
         fi
       else
         [ "$prev" != "unset" ] && echo "unset" > "$STATE"

@@ -26,8 +26,8 @@
       "ctrl+shift+n" = "new_tab_with_cwd";
 
       # Swap tabs like Firefox (ctrl+shift+pgup/pgdown)
-      "ctrl+shift+page_up" = "move_tab_forward";
-      "ctrl+shift+page_down" = "move_tab_backward";
+      "ctrl+shift+page_up" = "move_tab_backward";
+      "ctrl+shift+page_down" = "move_tab_forward";
 
       # Jump directly to tab by index
       "ctrl+1" = "goto_tab 1";
