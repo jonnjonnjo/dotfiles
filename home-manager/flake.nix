@@ -39,9 +39,19 @@
     }:
     let
       system = "x86_64-linux";
+      lib = nixpkgs.lib;
       pkgs = import nixpkgs {
         inherit system;
-        config.allowUnfree = true;
+        config.allowUnfreePredicate =
+          pkg:
+          builtins.elem (lib.getName pkg) [
+            "google-chrome"
+            "zoom"
+            "dbeaver"
+            "telegram-desktop"
+            "karere"
+            "claude-code"
+          ];
         overlays = [ claude-code-nix.overlays.default ];
       };
     in

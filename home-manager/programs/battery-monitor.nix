@@ -1,6 +1,7 @@
 { pkgs, ... }:
 let
   batteryMonitor = pkgs.writeShellScriptBin "battery-monitor" ''
+    set -e
     STATE="/tmp/battery-monitor-state"
     [ -f "$STATE" ] || echo "unset" > "$STATE"
 
@@ -13,6 +14,7 @@ let
 
       pct=$(echo "$info" | grep -oP '\d+(?=%)')
       status=$(echo "$info" | awk -F'[,:]' '{print $2}' | xargs)
+      echo "DEBUG: pct=$pct, status=$status" >&2
       prev=$(cat "$STATE")
 
        if echo "$status" | grep -qi "discharging"; then
@@ -22,15 +24,16 @@ let
          [ "$pct" -le 5  ] && cur="5"
 
          if [ "$cur" != "$prev" ]; then
+           echo "DEBUG: Notifying for cur=$cur, prev=$prev" >&2
            case "$cur" in
              5)
-               ${pkgs.libnotify}/bin/notify-send -u critical -t 0 "Battery Critical" "Battery at $pct% — about to die!"
+               ${pkgs.libnotify}/bin/notify-send -u critical -t 0 "Battery Critical" "Battery at $pct% — about to die!" > /dev/null 2>&1
                ;;
              10)
-               ${pkgs.libnotify}/bin/notify-send -u critical -t 10000 "Battery Low" "Battery at $pct% — plug in soon!"
+               ${pkgs.libnotify}/bin/notify-send -u critical -t 10000 "Battery Low" "Battery at $pct% — plug in soon!" > /dev/null 2>&1
                ;;
              20)
-               ${pkgs.libnotify}/bin/notify-send -u normal -t 5000 "Battery Warning" "Battery at $pct%"
+               ${pkgs.libnotify}/bin/notify-send -u normal -t 5000 "Battery Warning" "Battery at $pct%" > /dev/null 2>&1
                ;;
            esac
            echo "$cur" > "$STATE"

@@ -159,9 +159,6 @@ in
     httpie
     docker
     docker-compose
-    kubectl
-    terraform
-    ansible
     git-lfs
     lazygit
     tmux
@@ -214,6 +211,8 @@ in
     ffmpeg
     ripgrep
     zoom-us
+    telegram-desktop
+    karere
     randomWallpaper
     brightnessControl
     fastfetch
