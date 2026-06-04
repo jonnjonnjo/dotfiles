@@ -17,7 +17,7 @@
       style inactive-fg 240
       style colon-fg 51
       style date 51
-      timer-exec 'notify-send -a peaclock "time is up!"'
+      timer-exec 'notify-send -a peaclock "⏰ Timer Finished" "Your peaclock timer is up!" && ffmpeg -f lavfi -i "sine=f=523:d=0.1,sine=f=659:d=0.1,sine=f=784:d=0.25" -ac 1 -f wav - | paplay'
     '';
   };
 }

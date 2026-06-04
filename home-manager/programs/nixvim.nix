@@ -222,6 +222,29 @@
 
       vim.keymap.set("n", "<leader>tcpc", copy_template_to_clipboard, { desc = "CP Template to Clipboard" })
       vim.keymap.set("n", "<leader>tcpi", insert_template_at_cursor, { desc = "CP Template Insert at cursor" })
+
+      local ls = require("luasnip")
+      local s = ls.snippet
+      local t = ls.text_node
+      local i = ls.insert_node
+      local fmt = require("luasnip.extras.fmt").fmt
+
+      ls.add_snippets("cpp", {
+        s("input", fmt("int $1;\ncin >> $1;", { i(1, "n") })),
+        s("input2", fmt("int $1, $2;\ncin >> $1 >> $2;", { i(1, "a"), i(2, "b") })),
+        s("inputs", fmt("string $1;\ncin >> $1;", { i(1, "s") })),
+        s("inputarr", fmt("int $1[$2];\nfor (int $3 = 0; $3 < $2; $3++) cin >> $1[$3];", { i(1, "arr"), i(2, "n"), i(3, "i") })),
+        s("inputvec", fmt("vector<int> $1($2);\nfor (auto &$3 : $1) cin >> $3;", { i(1, "v"), i(2, "n"), i(3, "x") })),
+        s("print", fmt("print($1);", { i(1) })),
+        s("printyes", fmt("printyes($1);", { i(1, "cond") })),
+        s("printarr", fmt("printarr($1);", { i(1, "arr") })),
+        s("fastIO", t({
+          "ios_base::sync_with_stdio(0);",
+          "cin.tie(0);",
+          "cout.tie(0);"
+        })),
+        s("query", t({ "query solve();" })),
+      })
     '';
 
     plugins = {
@@ -287,6 +310,13 @@
           topdelete.text = "";
           changedelete.text = "~";
           untracked.text = "▎";
+        };
+      };
+
+      luasnip = {
+        enable = true;
+        settings = {
+          enable_autosnippets = true;
         };
       };
 
