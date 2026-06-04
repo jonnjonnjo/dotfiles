@@ -52,6 +52,17 @@
 
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
+  services.resolved = {
+    enable = true;
+    dnssec = "allow-downgrade";
+    dnsovertls = "opportunistic";
+    settings = {
+      Resolve = {
+        DNS = "1.1.1.1#cloudflare-dns.com 1.0.0.1#cloudflare-dns.com";
+        FallbackDNS = "8.8.8.8#dns.google";
+      };
+    };
+  };
 
   hardware.graphics = {
     enable = true;
