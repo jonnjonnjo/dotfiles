@@ -110,6 +110,20 @@
   services.pcscd.enable = true;
   services.gvfs.enable = true;
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+    config.common.default = "*";
+  };
+
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    wireplumber.enable = true;
+  };
   services.syncthing = {
     enable = true;
     user = "jon";
@@ -147,6 +161,7 @@
     isNormalUser = true;
     description = "";
     extraGroups = [
+      "input"
       "plugdev"
       "adbusers"
       "kvm"
@@ -175,6 +190,7 @@
   ];
   programs.zsh.enable = true;
   environment.systemPackages = with pkgs; [
+    showmethekey
     zlib
     libxml2
     freetype

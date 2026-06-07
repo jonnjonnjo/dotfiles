@@ -12,6 +12,7 @@ let
 in
 {
   imports = [
+    ./programs/obs-studio.nix
     ./programs/mpv.nix
     ./programs/vesktop.nix
     ./programs/zsh.nix
@@ -132,7 +133,6 @@ in
     gimp
     krita
     blender
-    obs-studio
     darktable
     rawtherapee
     audacity
